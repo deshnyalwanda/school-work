@@ -13,9 +13,9 @@ body {
 .ad-container {
     width: 100%;
     background-color: #e6e6e6; /* Light gray background for visibility */
-    padding: 10px;
+    padding: 10px; /* Provides internal spacing */
     text-align: center;
-    border-bottom: 1px solid #ccc; /* For top ad */
+    border-bottom: 1px solid #ccc; /* For top ad - though top ad is now removed */
     box-sizing: border-box;
     font-size: 14px;
     color: #555;
@@ -25,6 +25,11 @@ body {
 .bottom-ad {
     border-top: 1px solid #ccc; /* For bottom ad */
     border-bottom: none;
+    height: 16.66vh; /* Approximately 1/6th of the viewport height */
+    display: flex; /* Use flexbox to center content */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden; /* Hide anything that exceeds this height */
 }
 
 .main-content-wrapper {
@@ -32,70 +37,47 @@ body {
     flex-grow: 1; /* Allow this wrapper to take all available vertical space */
     width: 100%;
     overflow: hidden; /* Hide overflow of panels if they somehow exceed this */
-    box-sizing: border-box; /* Include padding and border in width calculations */
+    box-sizing: border-box;
+    padding: 10px; /* Add some padding around the main content */
+    gap: 10px; /* Space between flex items */
+    align-items: stretch; /* NEW: Ensure all direct children (.panel, .ad-panel-right) stretch to same height */
 }
 
 .panel {
-    /* Removed width from here as it will be set specifically for left and right panels */
-    padding: 20px;
-    border: 1px solid #ddd;
-    box-sizing: border-box; /* Include padding and border in width */
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-}
-
-.left-panel {
-    width: 40%; /* Left panel takes 40% of the main content wrapper */
     background-color: #fff;
-    border-right: none; /* No border between panels */
-}
-
-.right-panel {
-    width: 40%; /* Right panel takes 40% of the main content wrapper */
-    background-color: #f9f9f9;
-    border-right: none; /* No border between right panel and new ad panel */
-}
-
-/* New Right Ad Panel Styling */
-.ad-panel-right {
-    width: 20%; /* Takes 1/5 of the main content wrapper */
-    background-color: #d9d9d9; /* Slightly different background for visual distinction */
-    padding: 20px;
     border: 1px solid #ddd;
-    box-sizing: border-box;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: flex-start; /* Align content to the top */
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    overflow-y: auto; /* Allow this panel to scroll if its content overflows */
-    border-left: none; /* No border with the right panel */
+    overflow: hidden; /* Hide overflow to prevent scrollbars within inner elements */
+    flex: 1 1 auto; /* Allow panels to grow, shrink, and take auto base space */
+    min-width: 0; /* Allows content to shrink beyond its intrinsic size if necessary */
 }
 
-.header {
+.input-header, .header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 10px;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    flex-shrink: 0;
 }
 
-.input-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 10px;
-    flex-shrink: 0; /* Prevent header from shrinking */
+/* NEW: Normalize margins for elements inside headers */
+.input-header h2, .header h2,
+.input-header button, .header button {
+    margin: 0; /* Remove default browser margins to ensure consistent header height */
 }
 
 textarea {
-    width: 100%;
-    height: 400px; /* Fixed height for text area */
-    flex-grow: 0; /* Prevent textarea from growing beyond fixed height */
+    flex-grow: 1; /* Allow textarea to take available vertical space */
+    /* REMOVED: height: 400px; - now relying on flex-grow */
+    min-height: 150px; /* Ensure it's not too small on small screens */
+    flex-shrink: 0; /* Prevent textarea from shrinking below min-height if space is tight */
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 2px solid #333; /* Bold borders */
     resize: none; /* Disable manual resizing */
     font-size: 16px;
     line-height: 1.5;
@@ -103,7 +85,7 @@ textarea {
     overflow-y: auto; /* Enable vertical scrolling */
 }
 
-textarea.shrink-font {
+textarea.shrink-font { /* Consider if this class is still used or useful */
     font-size: 14px;
 }
 
@@ -131,43 +113,109 @@ button:hover {
     background-color: #218838;
 }
 
-h2 {
+h2, h3 { /* Ensure common h2/h3 styles are set */
     margin: 0;
 }
 
 #preview-output {
     flex-grow: 1; /* Allow preview content to take remaining space within its panel */
-    height: 400px; /* Fixed height for preview output area */
-    overflow-y: auto; /* Enable scrolling if content overflows */
+    /* REMOVED: height: 400px; - now relying on flex-grow */
     padding: 10px;
-    border: 1px solid #eee;
-    background-color: #fff;
-    font-size: 16px;
-    line-height: 1.6;
+    overflow-y: auto;
     box-sizing: border-box;
-}
-
-/* Table Styling */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-}
-
-table, th, td {
-    border: 1px solid #ccc;
-}
-
-th, td {
-    padding: 8px;
-    text-align: left;
-}
-
-th {
-    background-color: #f2f2f2;
-    font-weight: bold;
-}
-
-tr:nth-child(even) {
+    font-size: 16px;
+    line-height: 1.5;
     background-color: #f9f9f9;
+}
+
+.ad-panel-right {
+    background-color: #e6e6e6; /* Light gray background for visibility */
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex-shrink: 0; /* Prevent it from shrinking too much */
+    flex: 0 0 20%; /* Don't grow, don't shrink, base at 20% of parent width */
+    max-width: 280px; /* Cap its maximum width on very large screens */
+    min-width: 160px; /* Ensure it's not too small on smaller desktop screens */
+    display: flex; /* Use flex to center content */
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    box-sizing: border-box; /* Include padding/border in width */
+}
+
+.ad-panel-right h3 {
+    margin-bottom: 10px; /* Space between title and ad content */
+}
+
+/* --- Responsive Design (Media Queries) --- */
+
+/* For screens smaller than 992px (typical tablet landscape) */
+@media (max-width: 992px) {
+    .main-content-wrapper {
+        flex-direction: column; /* Stack panels vertically */
+        padding: 8px; /* Reduce padding */
+        gap: 8px; /* Reduce gap */
+        align-items: flex-start; /* NEW: Align items to start when stacked vertically */
+    }
+
+    .panel {
+        flex: none; /* Panels won't grow/shrink based on remaining space */
+        width: 100%; /* Take full width */
+        height: auto; /* Allow height to adjust */
+        min-height: 250px; /* Ensure minimum height for panels */
+    }
+
+    textarea, #preview-output {
+        height: 200px; /* Re-introduce a fixed height for smaller screens, or let min-height control */
+        min-height: 150px; /* Keep a minimum height */
+    }
+
+    .ad-panel-right {
+        width: 100%; /* Take full width when stacked */
+        max-width: none; /* Remove max-width constraint when stacked */
+        flex: none; /* No flex behavior when stacked */
+        height: auto;
+        margin-top: 10px; /* Add some space if placed below panels */
+        order: 3; /* Ensure it appears after the main panels if stacked */
+    }
+}
+
+
+/* For screens smaller than 576px (common phone portrait) */
+@media (max-width: 576px) {
+    .input-header, .header {
+        flex-direction: column; /* Stack header elements */
+        align-items: flex-start; /* Align to start */
+        padding: 5px 8px; /* Adjust padding */
+    }
+
+    h2, h3 {
+        margin-bottom: 5px; /* Add space below titles */
+        font-size: 1.2em; /* Slightly smaller font for titles */
+    }
+
+    button {
+        width: 100%; /* Full width buttons */
+        margin-top: 5px; /* Space between stacked buttons */
+        padding: 6px 8px; /* Adjust button padding */
+        font-size: 14px;
+    }
+
+    #paste-button {
+        margin-top: 5px;
+    }
+
+    textarea, #preview-output {
+        font-size: 14px; /* Slightly smaller font for very small screens */
+        height: 120px; /* Even smaller height for phones */
+        min-height: 80px;
+    }
+
+    .ad-container, .ad-panel-right {
+        padding: 5px; /* Slightly less padding for ads */
+        font-size: 11px; /* Smaller font for ad text */
+    }
 }
