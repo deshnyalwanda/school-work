@@ -20,134 +20,158 @@ function debounce(func, delay) {
 // (\[...\], \(...\)) to ChatGPT-style ($$...$$, $...$) which are
 // generally more compatible with Markdown parsers and MathJax for web display
 // and subsequent Pandoc conversion from HTML.
+function isDeepseekStyle(input) {
+    return (
+        input.includes('\\[') ||
+        input.includes('\\]') ||
+        input.includes('\\(') ||
+        input.includes('\\)') ||
+        input.includes('\\begin{align*}') ||
+        input.includes('\\boxed{')
+    );
+}
+
 function convertLaTeX(input) {
     let output = input;
-
-    // 1. Convert display math delimiters: \\[ ... \\] to $$ ... $$
-    //    Uses a non-greedy match to handle multiple blocks.
-    output = output.replace(/\\\[(.*?)\\\]/gs, '$$$$$1$$$$');
-
-    // 2. Convert inline math delimiters: \( ... \) to $ ... $
-    //    Uses a non-greedy match.
-    output = output.replace(/\\\((.*?)\\\)/gs, '$$$1$$');
-
-    // 3. Convert align* blocks specifically:
-    //    This logic breaks down each line within align* into its own display math block ($$).
-    //    It runs after the general delimiter conversion, so any `\[` or `\(` inside `align*`
-    //    would have already been converted.
-    output = output.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/gs, (match, content) => {
-        return content.split('\n').map(line => line.trim()).filter(line => line.length > 0)
-                      .map(line => `$$ ${line} $$`)
-                      .join('\n');
+    output = output.replace(/\\begin\{align\*\}([\s\S]*?)\\end\{align\*\}/g, (match, content) => {
+        const lines = content.split('\\\\').map(line => line.trim()).filter(line => line !== '');
+        return lines.map(line => `$$${line}$$`).join('\n');
     });
-
+    output = output.replace(/\\\[/g, '$$');
+    output = output.replace(/\\\]/g, '$$');
+    output = output.replace(/\\\(/g, '$');
+    output = output.replace(/\\\)/g, '$');
+    // Removed: output = output.replace(/^#+\s*(.*)$/gm, '**$1**'); // This line caused the bold/asterisk issue
+    output = output.replace(/^\s*---\s*$/gm, ''); // This removes horizontal rules.
+    output = output.replace(/\\boxed\{(.*?)\}/g, '$1');
     return output;
 }
 
-// --- Process and Render Text ---
-async function processText() {
-    let text = inputText.value;
+// --- Process Input and Preview ---
+let lastInputScrollTop = 0; // Store last scroll position of input
+let lastPreviewScrollTop = 0; // Store last scroll position of preview
 
-    // Convert DeepSeek-style LaTeX to ChatGPT-style first
-    text = convertLaTeX(text);
+function processText() {
+    // Save current scroll positions before updating
+    lastInputScrollTop = inputText.scrollTop;
+    lastPreviewScrollTop = previewOutput.scrollTop;
 
-    // Convert markdown to HTML
-    let htmlContent = marked.parse(text);
+    const rawText = inputText.value;
+    let processed = rawText;
 
-    // Set the HTML to the preview area
-    previewOutput.innerHTML = htmlContent;
+    if (isDeepseekStyle(rawText)) {
+        processed = convertLaTeX(rawText);
+        console.log("Converted from DeepSeek style.");
+    }
 
-    // Typeset (render) the math
-    if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
-        await MathJax.typesetPromise([previewOutput]);
+    const html = marked.parse(processed);
+    previewOutput.innerHTML = html;
+
+    if (window.MathJax) {
+        // Typeset and then restore scroll positions
+        MathJax.typesetPromise([previewOutput])
+            .then(() => {
+                // After MathJax typesets, the content height might change,
+                // so we restore the scroll positions.
+                inputText.scrollTop = lastInputScrollTop;
+                previewOutput.scrollTop = lastPreviewScrollTop;
+            })
+            .catch((err) =>
+                console.error('MathJax typesetting failed:', err)
+            );
+    } else {
+        // If MathJax isn't loaded, just restore scroll
+        inputText.scrollTop = lastInputScrollTop;
+        previewOutput.scrollTop = lastPreviewScrollTop;
     }
 }
 
-// --- Synchronized Scrolling ---
-let isScrolling = false;
+// Debounced version of processText
+const debouncedProcessText = debounce(processText, 300); // Adjust delay as needed
 
-inputText.addEventListener('scroll', () => {
-    if (!isScrolling) {
-        isScrolling = true;
-        // Calculate scroll percentage
-        const scrollPercentage = inputText.scrollTop / (inputText.scrollHeight - inputText.clientHeight);
-        // Apply to preview output
-        previewOutput.scrollTop = scrollPercentage * (previewOutput.scrollHeight - previewOutput.clientHeight);
-        setTimeout(() => { isScrolling = false; }, 50); // Small delay to prevent infinite loop
+// --- Sync Scroll ---
+let isProgrammaticScroll = false;
+let enableScrollingSync = true; // New flag to control scrolling sync
+
+function handleScrollSync(sourceElement, targetElement) {
+    if (enableScrollingSync && !isProgrammaticScroll) {
+        isProgrammaticScroll = true;
+        const scrollPercentage = sourceElement.scrollTop / (sourceElement.scrollHeight - sourceElement.clientHeight);
+        targetElement.scrollTop = scrollPercentage * (targetElement.scrollHeight - targetElement.clientHeight);
+        // No setTimeout needed here, as isProgrammaticScroll prevents infinite loop
+        isProgrammaticScroll = false; // Immediately reset
     }
-});
+}
 
-previewOutput.addEventListener('scroll', () => {
-    if (!isScrolling) {
-        isScrolling = true;
-        const scrollPercentage = previewOutput.scrollTop / (previewOutput.scrollHeight - previewOutput.clientHeight);
-        inputText.scrollTop = scrollPercentage * (inputText.scrollHeight - inputText.clientHeight);
-        setTimeout(() => { isScrolling = false; }, 50);
-    }
-});
+inputText.addEventListener('scroll', () => handleScrollSync(inputText, previewOutput));
+previewOutput.addEventListener('scroll', () => handleScrollSync(previewOutput, inputText));
+
+// Use the debounced version for input
+inputText.addEventListener('input', debouncedProcessText);
 
 
-// --- Hook input changes ---
-inputText.addEventListener('input', debounce(processText, 300));
-
-// --- Paste Functionality ---
+// --- Paste Button Functionality ---
 pasteButton.addEventListener('click', async () => {
+    enableScrollingSync = false; // Disable scrolling sync during paste and processing
     try {
         const clipboardText = await navigator.clipboard.readText();
         inputText.value = clipboardText;
-        processText(); // Immediately process pasted text
+
+        await processText(); // Directly call and await processText for immediate update
     } catch (err) {
         console.error('Failed to read clipboard contents: ', err);
-        alert('Could not paste from clipboard. Please paste manually.');
+        alert('Failed to paste from clipboard. Please ensure you have granted clipboard access or paste manually (Ctrl+V/Cmd+V).');
+    } finally {
+        enableScrollingSync = true; // Re-enable scrolling sync after processing
     }
 });
 
-// --- Download DOCX Function ---
+// --- Convert and Download as DOCX ---
 function downloadDocx() {
     // Ensure MathJax has finished rendering before attempting to convert to DOCX
     if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
         // Wait for MathJax to finish processing the current preview
         MathJax.typesetPromise([previewOutput])
-        .then(() => {
-            // Get the HTML content from the preview area after MathJax has rendered it
-            const contentToConvert = previewOutput.innerHTML;
+            .then(() => {
+                // Get the HTML content from the preview area after MathJax has rendered it
+                const contentToConvert = previewOutput.innerHTML;
 
-            fetch('/convert-to-docx', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'text/html'
-                },
-                body: contentToConvert
-            })
-            .then(response => {
-                if (!response.ok) {
-                    // Read the error message from the server if available
-                    return response.text().then(text => {
-                        throw new Error(`Server error: ${response.status} - ${text}`);
+                fetch('/convert-to-docx', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'text/html'
+                        },
+                        body: contentToConvert
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            // Read the error message from the server if available
+                            return response.text().then(text => {
+                                throw new Error(`Server error: ${response.status} - ${text}`);
+                            });
+                        }
+                        return response.blob(); // Get the response as a blob (the DOCX file)
+                    })
+                    .then(blob => {
+                        // Create a temporary URL for the blob and trigger download
+                        const link = document.createElement('a');
+                        link.href = URL.createObjectURL(blob);
+                        link.download = 'math_document.docx'; // Suggested filename
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(link.href); // Clean up the object URL
+                    })
+                    .catch(error => {
+                        console.error('Error during DOCX conversion or download:', error);
+                        alert("Conversion failed. Please ensure the server is running and Pandoc is correctly configured.");
                     });
-                }
-                return response.blob(); // Get the response as a blob (the DOCX file)
-            })
-            .then(blob => {
-                // Create a temporary URL for the blob and trigger download
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = 'math_document.docx'; // Suggested filename
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(link.href); // Clean up the object URL
-            })
-            .catch(error => {
-                console.error('Error during DOCX conversion or download:', error);
-                alert("Conversion failed. Please ensure the server is running and Pandoc is correctly configured.");
-            });
 
-        })
-        .catch(err => {
-            console.error("MathJax render failed before conversion:", err);
-            alert("Math rendering failed. Please try again.");
-        });
+            })
+            .catch(err => {
+                console.error("MathJax render failed before conversion:", err);
+                alert("Math rendering failed. Please try again.");
+            });
     } else {
         alert("MathJax is not loaded or ready. Cannot convert to DOCX.");
     }
