@@ -3,74 +3,51 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    flex-direction: column; /* Stack children vertically */
-    min-height: 100vh; /* Ensure body takes full viewport height */
-    overflow: hidden; /* Prevent body scroll, individual sections will scroll */
-    background-color: #f4f4f4;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow: hidden;
+    background-color: #f4f4f4; /* Light mode default body background */
+    color: #333; /* Default text color */
 }
 
-/* Ad Container Styling (Top/Bottom) */
-.ad-container {
-    width: 100%;
-    background-color: #e6e6e6; /* Light gray background for visibility */
-    padding: 10px;
-    text-align: center;
-    border-bottom: 1px solid #ccc; /* For top ad */
+.page-frame {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 3vw;
+    background-color: #FFF3E0; /* Light mode warm padding color */
     box-sizing: border-box;
-    font-size: 14px;
-    color: #555;
-    flex-shrink: 0; /* Prevent ads from shrinking */
-}
-
-.bottom-ad {
-    border-top: 1px solid #ccc; /* For bottom ad */
-    border-bottom: none;
+    overflow: hidden;
 }
 
 .main-content-wrapper {
-    display: flex; /* This now houses the two panels and the new right ad panel */
-    flex-grow: 1; /* Allow this wrapper to take all available vertical space */
+    display: flex;
+    flex-grow: 1;
     width: 100%;
-    overflow: hidden; /* Hide overflow of panels if they somehow exceed this */
-    box-sizing: border-box; /* Include padding and border in width calculations */
+    height: 100%;
+    overflow: hidden;
+    box-sizing: border-box;
+    background-color: #fff; /* Light mode main content background */
+    border: 1px solid #ddd; /* Light mode border */
 }
 
 .panel {
     padding: 20px;
-    border: 1px solid #ddd;
-    box-sizing: border-box; /* Include padding and border in width */
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-}
-
-.left-panel {
-    width: 40%; /* Left panel takes 40% of the main content wrapper */
-    background-color: #fff;
-    border-right: none; /* No border between panels */
-}
-
-.right-panel {
-    width: 40%; /* Right panel takes 40% of the main content wrapper */
-    background-color: #f9f9f9;
-    border-right: none; /* No border between right panel and new ad panel */
-}
-
-/* New Right Ad Panel Styling */
-.ad-panel-right {
-    width: 20%; /* Takes 1/5 of the main content wrapper */
-    background-color: #d9d9d9; /* Slightly different background for visual distinction */
-    padding: 20px;
-    border: 1px solid #ddd;
+    border: 1px solid #ddd; /* Light mode panel border */
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center content horizontally */
-    justify-content: flex-start; /* Align content to the top */
-    text-align: center;
-    font-size: 14px;
-    color: #333;
-    overflow-y: auto; /* Allow this panel to scroll if its content overflows */
-    border-left: none; /* No border with the right panel */
+}
+
+.left-panel {
+    width: 50%;
+    background-color: #fff; /* Light mode left panel background */
+    border-right: 1px solid #eee; /* Light mode border between panels */
+}
+
+.right-panel {
+    width: 50%;
+    background-color: #f9f9f9; /* Light mode right panel background */
 }
 
 .header {
@@ -78,7 +55,9 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    flex-shrink: 0;
+    flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+    gap: 10px; /* Space between header items */
 }
 
 .input-header {
@@ -86,20 +65,22 @@ body {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
-    flex-shrink: 0; /* Prevent header from shrinking */
+    flex-shrink: 0;
 }
 
 textarea {
     width: 100%;
-    height: 400px; /* Fixed height for text area */
-    flex-grow: 0; /* Prevent textarea from growing beyond fixed height */
+    height: 400px;
+    flex-grow: 0;
     padding: 10px;
-    border: 1px solid #ccc;
-    resize: none; /* Disable manual resizing */
+    border: 1px solid #ccc; /* Light mode textarea border */
+    resize: none;
     font-size: 16px;
     line-height: 1.5;
     box-sizing: border-box;
-    overflow-y: auto; /* Enable vertical scrolling */
+    overflow-y: auto;
+    background-color: #fff; /* Light mode textarea background */
+    color: #333; /* Light mode textarea text color */
 }
 
 textarea.shrink-font {
@@ -108,12 +89,13 @@ textarea.shrink-font {
 
 button {
     padding: 10px 15px;
-    background-color: #007bff;
+    background-color: #007bff; /* Default button color */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    margin-left: 5px; /* Add some space between buttons */
 }
 
 button:hover {
@@ -122,8 +104,6 @@ button:hover {
 
 #paste-button {
     background-color: #28a745;
-    padding: 8px 12px;
-    font-size: 14px;
 }
 
 #paste-button:hover {
@@ -132,21 +112,22 @@ button:hover {
 
 h2 {
     margin: 0;
+    color: #333; /* Light mode heading color */
 }
 
 #preview-output {
-    flex-grow: 1; /* Allow preview content to take remaining space within its panel */
-    height: 400px; /* Fixed height for preview output area */
-    overflow-y: auto; /* Enable scrolling if content overflows */
+    flex-grow: 1;
+    height: 400px;
+    overflow-y: auto;
     padding: 10px;
-    border: 1px solid #eee;
-    background-color: #fff;
+    border: 1px solid #eee; /* Light mode preview border */
+    background-color: #fff; /* Light mode preview background */
     font-size: 16px;
     line-height: 1.6;
     box-sizing: border-box;
+    color: #333; /* Light mode preview text color */
 }
 
-/* Table Styling */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -154,7 +135,7 @@ table {
 }
 
 table, th, td {
-    border: 1px solid #ccc;
+    border: 1px solid #ccc; /* Light mode table border */
 }
 
 th, td {
@@ -163,117 +144,257 @@ th, td {
 }
 
 th {
-    background-color: #f2f2f2;
+    background-color: #f2f2f2; /* Light mode table header background */
     font-weight: bold;
 }
 
 tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #f9f9f9; /* Light mode even row background */
 }
 
-/* Updated styles for bottom ad space */
-.ad-container.bottom-ad {
-    height: 16.66vh; /* Approximately 1/6th of the viewport height */
-    background-color: #d9d9d9; /* Same color as .ad-panel-right */
-    display: flex;
-    flex-direction: column; /* Stack text and ad vertically */
-    justify-content: center;
-    align-items: center;
+.footer-text {
+    margin-top: 20px;
     text-align: center;
-    padding: 10px;
-    box-sizing: border-box;
-    border-top: 1px solid #ccc; /* Ensure existing border is kept */
-    border-bottom: none; /* Ensure existing border is kept */
+    font-size: 0.7em;
+    color: #666; /* Light mode footer text color */
+    flex-shrink: 0;
 }
 
-.ad-container.bottom-ad h3 {
-    margin-bottom: 10px; /* Adds space between the text and the ad */
-    color: #333; /* Example: Dark grey color for the text */
+/* --- Dark Mode Switch Styles --- */
+.dark-mode-toggle-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
-/* --- Media Queries for Responsiveness --- */
+.toggle-label {
+    font-size: 0.9em;
+    color: #555;
+}
 
-/* For screens smaller than 768px (common tablet portrait and phone landscape) */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 34px; /* Smaller width */
+    height: 20px; /* Smaller height */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 12px; /* Smaller knob */
+    width: 12px; /* Smaller knob */
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: #007bff; /* Active color */
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px #007bff;
+}
+
+input:checked + .slider:before {
+    transform: translateX(14px); /* Smaller knob movement */
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 20px; /* Adjust border-radius to match smaller size */
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
+/* --- Dark Mode Styles --- */
+body.dark-mode {
+    background-color: #1a1a1a; /* Dark body background */
+    color: #e0e0e0; /* Light text color */
+}
+
+body.dark-mode .page-frame {
+    background-color: #2c2c2c; /* Darker padding color */
+}
+
+body.dark-mode .main-content-wrapper {
+    background-color: #1a1a1a; /* Dark main content background */
+    border-color: #444; /* Darker border */
+}
+
+body.dark-mode .panel {
+    border-color: #444; /* Darker panel border */
+}
+
+body.dark-mode .left-panel {
+    background-color: #1f1f1f; /* Darker left panel background */
+    border-right-color: #444; /* Darker border between panels */
+}
+
+body.dark-mode .right-panel {
+    background-color: #242424; /* Darker right panel background */
+}
+
+body.dark-mode h2 {
+    color: #f0f0f0; /* Light heading color in dark mode */
+}
+
+body.dark-mode textarea {
+    background-color: #2a2a2a; /* Dark textarea background */
+    color: #e0e0e0; /* Light textarea text color */
+    border-color: #555; /* Darker textarea border */
+}
+
+body.dark-mode button {
+    background-color: #0056b3; /* Slightly darker blue for buttons in dark mode */
+    color: #f0f0f0;
+}
+
+body.dark-mode button:hover {
+    background-color: #004085;
+}
+
+body.dark-mode #paste-button {
+    background-color: #218838;
+}
+
+body.dark-mode #paste-button:hover {
+    background-color: #1e7e34;
+}
+
+body.dark-mode #preview-output {
+    background-color: #2a2a2a; /* Dark preview background */
+    color: #e0e0e0; /* Light preview text color */
+    border-color: #555; /* Dark preview border */
+}
+
+body.dark-mode table,
+body.dark-mode th,
+body.dark-mode td {
+    border-color: #555; /* Dark table border */
+}
+
+body.dark-mode th {
+    background-color: #3a3a3a; /* Dark table header background */
+}
+
+body.dark-mode tr:nth-child(even) {
+    background-color: #2e2e2e; /* Dark even row background */
+}
+
+body.dark-mode .footer-text {
+    color: #aaa; /* Lighter footer text color in dark mode */
+}
+
+body.dark-mode .toggle-label {
+    color: #ccc; /* Light color for toggle label in dark mode */
+}
+
+body.dark-mode .switch input:checked + .slider {
+    background-color: #4CAF50; /* A distinct active color for dark mode switch */
+}
+
+/* Media Queries for Responsiveness - adjusted padding for consistency */
 @media (max-width: 768px) {
+    .page-frame {
+        padding: 4vw;
+    }
+
     .main-content-wrapper {
-        flex-direction: column; /* Stack panels vertically */
-        overflow-y: auto; /* Allow vertical scrolling for the wrapper */
+        flex-direction: column;
+        overflow-y: auto;
     }
 
     .left-panel,
-    .right-panel,
-    .ad-panel-right {
-        width: 100%; /* Make panels take full width */
-        border-right: 1px solid #ddd; /* Restore right border for stacked panels */
-        border-bottom: 1px solid #ddd; /* Add a bottom border between stacked panels */
+    .right-panel {
+        width: 100%;
+        border-right: 1px solid #ddd;
+        border-bottom: 1px solid #ddd;
+    }
+
+    body.dark-mode .left-panel,
+    body.dark-mode .right-panel {
+        border-right-color: #444;
+        border-bottom-color: #444;
     }
 
     .left-panel {
-        border-bottom: none; /* No bottom border for left panel as right panel will have top */
+        border-bottom: none;
     }
 
     .right-panel {
-        border-top: none; /* No top border for right panel as left panel will have bottom */
-    }
-
-    .ad-panel-right {
-        order: 3; /* Move the right ad panel to the bottom when stacked */
-        border-top: none; /* Remove top border if it follows right-panel */
-        border-bottom: 1px solid #ddd; /* Add a bottom border */
+        border-top: none;
     }
 
     textarea,
     #preview-output {
-        height: 250px; /* Reduce height for smaller screens */
+        height: 250px;
     }
 }
 
-/* For screens smaller than 480px (common phone portrait) */
 @media (max-width: 480px) {
     .panel {
-        padding: 15px; /* Reduce padding for smaller screens */
+        padding: 15px;
     }
 
     button {
-        font-size: 14px; /* Smaller font size for buttons */
+        font-size: 14px;
         padding: 8px 12px;
     }
 
     #paste-button {
-        font-size: 12px; /* Even smaller for paste button */
+        font-size: 12px;
         padding: 6px 10px;
     }
 
     textarea,
     #preview-output {
-        font-size: 14px; /* Smaller font for text areas */
-        height: 200px; /* Further reduce height for very small screens */
+        font-size: 14px;
+        height: 200px;
     }
 
-    .ad-container {
-        padding: 8px; /* Slightly less padding for ad containers */
-        font-size: 12px; /* Smaller font for ad text */
-    }
-
-    .ad-container.bottom-ad {
-        height: auto; /* Let the height be determined by content */
-        min-height: 10vh; /* Minimum height for visibility */
+    .page-frame {
+        padding: 2vw;
     }
 
     h2 {
-        font-size: 1.2em; /* Adjust heading size */
+        font-size: 1.2em;
     }
 
-    /* Adjust table font size for readability */
     table, th, td {
         font-size: 14px;
     }
+
+    .footer-text {
+        font-size: 0.6em;
+    }
 }
 
-/* Optional: Landscape mode for phones */
 @media (max-height: 400px) and (max-width: 800px) and (orientation: landscape) {
     textarea,
     #preview-output {
-        height: 150px; /* Even shorter in landscape to maximize vertical space */
+        height: 150px;
     }
 }

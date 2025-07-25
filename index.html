@@ -8,63 +8,43 @@
     <script>
         MathJax = {
             tex: {
-                inlineMath: [['$', '$'], ['\\(', '\\)']] // Enable $...$ for inline math
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
             },
             svg: {
-                fontCache: 'global' // For better performance
+                fontCache: 'global'
             }
         };
     </script>
     <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
-     crossorigin="anonymous"></script>
-
 </head>
 <body>
-    <div class="main-content-wrapper">
-        <div class="panel left-panel">
-            <div class="input-header">
-                <h2>Paste Text from AI</h2>
-                <button id="paste-button">Paste</button>
+    <div class="page-frame">
+        <div class="main-content-wrapper">
+            <div class="panel left-panel">
+                <div class="input-header">
+                    <h2>Paste Text from AI</h2>
+                    <button id="paste-button">Paste</button>
+                </div>
+                <textarea id="input-text" placeholder="Paste your mathematical text here..."></textarea>
             </div>
-            <textarea id="input-text" placeholder="Paste your mathematical text here..."></textarea>
-        </div>
-        <div class="panel right-panel">
-            <div class="header">
-                <h2>Preview</h2>
-                <button id="convert-button">Convert to Word (Download)</button>
+            <div class="panel right-panel">
+                <div class="header">
+                    <h2>Preview</h2>
+                    <div class="dark-mode-toggle-container">
+                        <label class="switch">
+                            <input type="checkbox" id="dark-mode-switch">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="toggle-label">Dark Mode</span>
+                    </div>
+                    <button id="convert-button">Convert to Word (Download)</button>
+                </div>
+                <div id="preview-output"></div>
             </div>
-            <div id="preview-output"></div>
         </div>
-        <div class="ad-panel-right">
-            <h3>Right Ad Space</h3>
-            <ins class="adsbygoogle"
-                 style="display:block"
-                 data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-                 data-ad-slot="YOUR_RIGHT_AD_SLOT_ID"
-                 data-ad-format="auto"
-                 data-full-width-responsive="true"></ins>
-            <script>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-        </div>
+        <div class="footer-text">Developed by AMan_Punch Industries...</div>
     </div>
-
-    <div class="ad-container bottom-ad">
-        <h3>Bottom Ad Space</h3>
-        <ins class="adsbygoogle"
-             style="display:block"
-             data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-             data-ad-slot="YOUR_BOTTOM_AD_SLOT_ID"
-             data-ad-format="auto"
-             data-full-width-responsive="true"></ins>
-        <script>
-             (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
-    </div>
-
     <script src="script.js"></script>
 </body>
 </html>
