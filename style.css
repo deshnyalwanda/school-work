@@ -36,7 +36,6 @@ body {
 }
 
 .panel {
-    /* Removed width from here as it will be set specifically for left and right panels */
     padding: 20px;
     border: 1px solid #ddd;
     box-sizing: border-box; /* Include padding and border in width */
@@ -190,4 +189,91 @@ tr:nth-child(even) {
 .ad-container.bottom-ad h3 {
     margin-bottom: 10px; /* Adds space between the text and the ad */
     color: #333; /* Example: Dark grey color for the text */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* For screens smaller than 768px (common tablet portrait and phone landscape) */
+@media (max-width: 768px) {
+    .main-content-wrapper {
+        flex-direction: column; /* Stack panels vertically */
+        overflow-y: auto; /* Allow vertical scrolling for the wrapper */
+    }
+
+    .left-panel,
+    .right-panel,
+    .ad-panel-right {
+        width: 100%; /* Make panels take full width */
+        border-right: 1px solid #ddd; /* Restore right border for stacked panels */
+        border-bottom: 1px solid #ddd; /* Add a bottom border between stacked panels */
+    }
+
+    .left-panel {
+        border-bottom: none; /* No bottom border for left panel as right panel will have top */
+    }
+
+    .right-panel {
+        border-top: none; /* No top border for right panel as left panel will have bottom */
+    }
+
+    .ad-panel-right {
+        order: 3; /* Move the right ad panel to the bottom when stacked */
+        border-top: none; /* Remove top border if it follows right-panel */
+        border-bottom: 1px solid #ddd; /* Add a bottom border */
+    }
+
+    textarea,
+    #preview-output {
+        height: 250px; /* Reduce height for smaller screens */
+    }
+}
+
+/* For screens smaller than 480px (common phone portrait) */
+@media (max-width: 480px) {
+    .panel {
+        padding: 15px; /* Reduce padding for smaller screens */
+    }
+
+    button {
+        font-size: 14px; /* Smaller font size for buttons */
+        padding: 8px 12px;
+    }
+
+    #paste-button {
+        font-size: 12px; /* Even smaller for paste button */
+        padding: 6px 10px;
+    }
+
+    textarea,
+    #preview-output {
+        font-size: 14px; /* Smaller font for text areas */
+        height: 200px; /* Further reduce height for very small screens */
+    }
+
+    .ad-container {
+        padding: 8px; /* Slightly less padding for ad containers */
+        font-size: 12px; /* Smaller font for ad text */
+    }
+
+    .ad-container.bottom-ad {
+        height: auto; /* Let the height be determined by content */
+        min-height: 10vh; /* Minimum height for visibility */
+    }
+
+    h2 {
+        font-size: 1.2em; /* Adjust heading size */
+    }
+
+    /* Adjust table font size for readability */
+    table, th, td {
+        font-size: 14px;
+    }
+}
+
+/* Optional: Landscape mode for phones */
+@media (max-height: 400px) and (max-width: 800px) and (orientation: landscape) {
+    textarea,
+    #preview-output {
+        height: 150px; /* Even shorter in landscape to maximize vertical space */
+    }
 }
