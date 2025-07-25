@@ -15,189 +15,87 @@ function debounce(func, delay) {
 }
 
 // --- DeepSeek to ChatGPT LaTeX Conversion ---
-function isDeepseekStyle(input) {
-    // These checks remain to determine if the input *might* be DeepSeek style
-    // even if we no longer explicitly convert \[, \], \(, \).
-    return (
-        input.includes('\\[') ||
-        input.includes('\\]') ||
-        input.includes('\\(') ||
-        input.includes('\\)') ||
-        input.includes('\\begin{align*}') ||
-        /^#+\s/m.test(input) ||
-        /^\s*---\s*$/m.test(input) ||
-        input.includes('\\boxed{')
-    );
-}
-
+// This function aims to convert DeepSeek-style LaTeX delimiters
+// (\[...\], \(...\)) to ChatGPT-style ($$...$$, $...$) which are
+// generally more compatible with Markdown parsers and MathJax for web display
+// and subsequent Pandoc conversion from HTML.
 function convertLaTeX(input) {
     let output = input;
 
-    // This conversion specifically targets align* blocks.
-    // It breaks down each line within align* into its own display math block ($$).
-    // If you intend for `align*` to be preserved as a single block for MathJax,
-    // this specific conversion might need adjustment.
-    output = output.replace(/\\begin\{align\*\}([\s\S]*?)\\end\{align\*\}/g, (match, content) => {
-        const lines = content.split('\\\\').map(line => line.trim()).filter(line => line !== '');
-        return lines.map(line => `$$${line}$$`).join('\n');
+    // 1. Convert display math delimiters: \\[ ... \\] to $$ ... $$
+    //    Uses a non-greedy match to handle multiple blocks.
+    output = output.replace(/\\\[(.*?)\\\]/gs, '$$$$$1$$$$');
+
+    // 2. Convert inline math delimiters: \( ... \) to $ ... $
+    //    Uses a non-greedy match.
+    output = output.replace(/\\\((.*?)\\\)/gs, '$$$1$$');
+
+    // 3. Convert align* blocks specifically:
+    //    This logic breaks down each line within align* into its own display math block ($$).
+    //    It runs after the general delimiter conversion, so any `\[` or `\(` inside `align*`
+    //    would have already been converted.
+    output = output.replace(/\\begin\{align\*\}(.*?)\\end\{align\*\}/gs, (match, content) => {
+        return content.split('\n').map(line => line.trim()).filter(line => line.length > 0)
+                      .map(line => `$$ ${line} $$`)
+                      .join('\n');
     });
-
-    // Modified: Convert any heading (e.g., #, ##, ###, ####) to bold text
-    output = output.replace(/^#+\s*(.*)$/gm, '**$1**');
-    // Remove horizontal rules
-    output = output.replace(/^\s*---\s*$/gm, '');
-    // Unbox \boxed{} content
-    output = output.replace(/\\boxed\{(.*?)\}/g, '$1');
-
-    // CRITICAL CHANGE: Removed the following lines which were incorrectly
-    // converting `\[`, `\]`, `\(` and `\)` to `$$` or `$`.
-    // These conversions were breaking LaTeX matrix environments (e.g., `\\[` for new rows)
-    // and other standard MathJax delimiters.
-    // MathJax (configured in index.html) already handles these standard delimiters correctly.
-    // output = output.replace(/\\\[/g, '$$');
-    // output = output.replace(/\\\]/g, '$$');
-    // output = output.replace(/\\\(/g, '$');
-    // output = output.replace(/\\\)/g, '$');
 
     return output;
 }
 
-// --- Process Input and Preview ---
-let lastInputScrollTop = 0; // Store last scroll position of input
-let lastPreviewScrollTop = 0; // Store last scroll position of preview
+// --- Process and Render Text ---
+async function processText() {
+    let text = inputText.value;
 
-function processText() {
-    // Save current scroll positions before updating
-    lastInputScrollTop = inputText.scrollTop;
-    lastPreviewScrollTop = previewOutput.scrollTop;
+    // Convert DeepSeek-style LaTeX to ChatGPT-style first
+    text = convertLaTeX(text);
 
-    const rawText = inputText.value;
-    let processed = rawText;
+    // Convert markdown to HTML
+    let htmlContent = marked.parse(text);
 
-    if (isDeepseekStyle(rawText)) {
-        processed = convertLaTeX(rawText);
-        console.log("Converted from DeepSeek style.");
-    }
+    // Set the HTML to the preview area
+    previewOutput.innerHTML = htmlContent;
 
-    const html = marked.parse(processed);
-    previewOutput.innerHTML = html;
-
-    if (window.MathJax) {
-        // Typeset and then restore scroll positions
-        MathJax.typesetPromise([previewOutput])
-            .then(() => {
-                // After MathJax typesets, the content height might change,
-                // so we restore the scroll positions.
-                inputText.scrollTop = lastInputScrollTop;
-                previewOutput.scrollTop = lastPreviewScrollTop;
-            })
-            .catch((err) =>
-                console.error('MathJax typesetting failed:', err)
-            );
-    } else {
-        // If MathJax isn't loaded, just restore scroll
-        inputText.scrollTop = lastInputScrollTop;
-        previewOutput.scrollTop = lastPreviewScrollTop;
+    // Typeset (render) the math
+    if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+        await MathJax.typesetPromise([previewOutput]);
     }
 }
 
-// Debounced version of processText
-const debouncedProcessText = debounce(processText, 300); // Adjust delay as needed
+// --- Hook input changes ---
+inputText.addEventListener('input', debounce(processText, 300));
 
-// --- Sync Scroll ---
-let isProgrammaticScroll = false;
-function handleScrollSync(scrolling, target) {
-    if (isProgrammaticScroll) return;
-
-    isProgrammaticScroll = true;
-    requestAnimationFrame(() => {
-        const ratio = scrolling.scrollTop / (scrolling.scrollHeight - scrolling.clientHeight);
-        target.scrollTop = ratio * (target.scrollHeight - target.clientHeight);
-        isProgrammaticScroll = false;
-    });
-}
-
-inputText.addEventListener('scroll', () => handleScrollSync(inputText, previewOutput));
-previewOutput.addEventListener('scroll', () => handleScrollSync(previewOutput, inputText));
-
-// --- Event Listeners ---
-// Use the debounced version for input
-inputText.addEventListener('input', debouncedProcessText);
-
-// Handle paste event directly on the textarea to apply shrink-font
-inputText.addEventListener('paste', () => {
-    inputText.classList.add('shrink-font');
-    // Process text after a short delay to allow content to settle
-    setTimeout(() => debouncedProcessText(), 0);
-});
-
-inputText.addEventListener('keydown', () => {
-    // Remove shrink-font on any keydown to ensure normal editing
-    inputText.classList.remove('shrink-font');
-});
-
-// --- Paste Button Functionality ---
+// --- Paste Functionality ---
 pasteButton.addEventListener('click', async () => {
     try {
-        const text = await navigator.clipboard.readText();
-        inputText.value = text;
-        inputText.classList.add('shrink-font'); // Apply shrink font on paste
-        // Immediately process the pasted text, debounced to prevent jump
-        debouncedProcessText();
+        const clipboardText = await navigator.clipboard.readText();
+        inputText.value = clipboardText;
+        processText(); // Immediately process pasted text
     } catch (err) {
         console.error('Failed to read clipboard contents: ', err);
-        alert('Failed to paste from clipboard. Please ensure you have granted clipboard access or paste manually (Ctrl+V/Cmd+V).');
+        alert('Could not paste from clipboard. Please paste manually.');
     }
 });
 
-
-// --- Convert and Download as DOCX using Server-Side Pandoc ---
+// --- Download DOCX Function ---
 function downloadDocx() {
-    if (!previewOutput.innerHTML.trim()) {
-        alert("No content to export.");
-        return;
-    }
-
-    // Wait for MathJax to complete typesetting before sending HTML to server
-    // This ensures that MathJax-rendered elements (like SVGs or CHTML) are in the HTML
-    MathJax.typesetPromise([previewOutput])
+    // Ensure MathJax has finished rendering before attempting to convert to DOCX
+    if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+        // Wait for MathJax to finish processing the current preview
+        MathJax.typesetPromise([previewOutput])
         .then(() => {
-            // Construct the full HTML content to send to the server
-            // This ensures all necessary styles for tables are included.
-            const htmlContent = `
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>Export</title>
-    <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
-        /* MathJax rendered elements might be SVG or CHTML, so ensure basic display */
-        .mjx-chtml, .mjx-svg { display: inline-block; vertical-align: middle; }
+            // Get the HTML content from the preview area after MathJax has rendered it
+            const contentToConvert = previewOutput.innerHTML;
 
-        /* Include table styles for Pandoc to ideally pick up */
-        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
-        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-        th { background-color: #f2f2f2; font-weight: bold; }
-        tr:nth-child(even) { background-color: #f9f9f9; }
-    </style>
-</head>
-<body>
-${previewOutput.innerHTML}
-</body>
-</html>`;
-
-            // Send HTML to the server for Pandoc conversion
-            fetch('/convert-to-docx', { // This is the endpoint on your server
+            fetch('/convert-to-docx', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'text/html', // Indicate that you're sending HTML
+                    'Content-Type': 'text/html'
                 },
-                body: htmlContent,
+                body: contentToConvert
             })
             .then(response => {
                 if (!response.ok) {
-                    // If the server response is not OK (e.g., 500 error)
                     // Read the error message from the server if available
                     return response.text().then(text => {
                         throw new Error(`Server error: ${response.status} - ${text}`);
@@ -225,6 +123,9 @@ ${previewOutput.innerHTML}
             console.error("MathJax render failed before conversion:", err);
             alert("Math rendering failed. Please try again.");
         });
+    } else {
+        alert("MathJax is not loaded or ready. Cannot convert to DOCX.");
+    }
 }
 
 // --- Hook download button ---

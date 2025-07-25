@@ -28,22 +28,14 @@ app.post('/convert-to-docx', (req, res) => {
     fs.writeFile(inputFilePath, htmlContent, (err) => {
         if (err) {
             console.error('Error writing HTML to temp file:', err);
-            return res.status(500).send('Server error: Could not write HTML content.');
+            return res.status(500).send('Server error: Could not write temporary file.');
         }
 
-        // Pandoc command:
-        // --standalone: Create a complete standalone document.
-        // --embed-resources: Embed images, etc., directly into the DOCX.
-        // --mathjax: Tells Pandoc to process LaTeX math in HTML using MathJax syntax.
-        //    (This is crucial if you're sending raw LaTeX or relying on Pandoc's math rendering)
-        // If your MathJax is already rendering to SVG/CHTML in the HTML you send,
-        // Pandoc will embed those as images/HTML elements.
-        // For best results, consider sending the *raw Markdown/LaTeX* to the server
-        // and letting Pandoc convert it directly to DOCX with native math.
-        const pandocCommand = `pandoc "${inputFilePath}" -o "${outputFilePath}" --standalone --embed-resources --mathjax`;
+        // Updated Pandoc command: Removed --embed-resources
+        const pandocCommand = `pandoc "${inputFilePath}" -o "${outputFilePath}" --standalone --mathjax`;
 
         exec(pandocCommand, (error, stdout, stderr) => {
-            // Clean up the temporary input file immediately
+            // Clean up the temporary input HTML file immediately
             fs.unlink(inputFilePath, (unlinkErr) => {
                 if (unlinkErr) console.error('Error deleting temp input file:', unlinkErr);
             });
