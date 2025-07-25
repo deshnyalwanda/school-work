@@ -1,0 +1,173 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column; /* Stack children vertically */
+    min-height: 100vh; /* Ensure body takes full viewport height */
+    overflow: hidden; /* Prevent body scroll, individual sections will scroll */
+    background-color: #f4f4f4;
+}
+
+/* Ad Container Styling (Top/Bottom) */
+.ad-container {
+    width: 100%;
+    background-color: #e6e6e6; /* Light gray background for visibility */
+    padding: 10px;
+    text-align: center;
+    border-bottom: 1px solid #ccc; /* For top ad */
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #555;
+    flex-shrink: 0; /* Prevent ads from shrinking */
+}
+
+.bottom-ad {
+    border-top: 1px solid #ccc; /* For bottom ad */
+    border-bottom: none;
+}
+
+.main-content-wrapper {
+    display: flex; /* This now houses the two panels and the new right ad panel */
+    flex-grow: 1; /* Allow this wrapper to take all available vertical space */
+    width: 100%;
+    overflow: hidden; /* Hide overflow of panels if they somehow exceed this */
+    box-sizing: border-box; /* Include padding and border in width calculations */
+}
+
+.panel {
+    /* Removed width from here as it will be set specifically for left and right panels */
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* Include padding and border in width */
+    display: flex;
+    flex-direction: column; /* Stack content vertically */
+}
+
+.left-panel {
+    width: 40%; /* Left panel takes 40% of the main content wrapper */
+    background-color: #fff;
+    border-right: none; /* No border between panels */
+}
+
+.right-panel {
+    width: 40%; /* Right panel takes 40% of the main content wrapper */
+    background-color: #f9f9f9;
+    border-right: none; /* No border between right panel and new ad panel */
+}
+
+/* New Right Ad Panel Styling */
+.ad-panel-right {
+    width: 20%; /* Takes 1/5 of the main content wrapper */
+    background-color: #d9d9d9; /* Slightly different background for visual distinction */
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    justify-content: flex-start; /* Align content to the top */
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+    overflow-y: auto; /* Allow this panel to scroll if its content overflows */
+    border-left: none; /* No border with the right panel */
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+.input-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-shrink: 0; /* Prevent header from shrinking */
+}
+
+textarea {
+    width: 100%;
+    height: 400px; /* Fixed height for text area */
+    flex-grow: 0; /* Prevent textarea from growing beyond fixed height */
+    padding: 10px;
+    border: 1px solid #ccc;
+    resize: none; /* Disable manual resizing */
+    font-size: 16px;
+    line-height: 1.5;
+    box-sizing: border-box;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+textarea.shrink-font {
+    font-size: 14px;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#paste-button {
+    background-color: #28a745;
+    padding: 8px 12px;
+    font-size: 14px;
+}
+
+#paste-button:hover {
+    background-color: #218838;
+}
+
+h2 {
+    margin: 0;
+}
+
+#preview-output {
+    flex-grow: 1; /* Allow preview content to take remaining space within its panel */
+    height: 400px; /* Fixed height for preview output area */
+    overflow-y: auto; /* Enable scrolling if content overflows */
+    padding: 10px;
+    border: 1px solid #eee;
+    background-color: #fff;
+    font-size: 16px;
+    line-height: 1.6;
+    box-sizing: border-box;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}

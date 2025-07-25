@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Text Formatter</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']] // Enable $...$ for inline math
+            },
+            svg: {
+                fontCache: 'global' // For better performance
+            }
+        };
+    </script>
+    <script id="MathJax-script" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <div class="ad-container top-ad">
+        <p>Top Advertisement Space</p>
+        </div>
+
+    <div class="main-content-wrapper">
+        <div class="panel left-panel">
+            <div class="input-header">
+                <h2>Paste Text from AI</h2>
+                <button id="paste-button">Paste</button>
+            </div>
+            <textarea id="input-text" placeholder="Paste your mathematical text here..."></textarea>
+        </div>
+        <div class="panel right-panel">
+            <div class="header">
+                <h2>Preview</h2>
+                <button id="convert-button">Convert to Word (Download)</button>
+            </div>
+            <div id="preview-output"></div>
+        </div>
+        <div class="ad-panel-right">
+            <h3>Right Ad Space</h3>
+            <p>Your advertisement content here.</p>
+            </div>
+    </div>
+
+    <div class="ad-container bottom-ad">
+        <p>Bottom Advertisement Space</p>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
