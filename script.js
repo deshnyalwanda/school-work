@@ -5,6 +5,7 @@ const convertButton = document.getElementById('convert-button');
 const pasteButton = document.getElementById('paste-button');
 
 // --- Debounce Function ---
+// Ensures a function is not called too frequently.
 function debounce(func, delay) {
     let timeout;
     return function (...args) {
@@ -61,6 +62,30 @@ async function processText() {
         await MathJax.typesetPromise([previewOutput]);
     }
 }
+
+// --- Synchronized Scrolling ---
+let isScrolling = false;
+
+inputText.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        isScrolling = true;
+        // Calculate scroll percentage
+        const scrollPercentage = inputText.scrollTop / (inputText.scrollHeight - inputText.clientHeight);
+        // Apply to preview output
+        previewOutput.scrollTop = scrollPercentage * (previewOutput.scrollHeight - previewOutput.clientHeight);
+        setTimeout(() => { isScrolling = false; }, 50); // Small delay to prevent infinite loop
+    }
+});
+
+previewOutput.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        isScrolling = true;
+        const scrollPercentage = previewOutput.scrollTop / (previewOutput.scrollHeight - previewOutput.clientHeight);
+        inputText.scrollTop = scrollPercentage * (inputText.scrollHeight - inputText.clientHeight);
+        setTimeout(() => { isScrolling = false; }, 50);
+    }
+});
+
 
 // --- Hook input changes ---
 inputText.addEventListener('input', debounce(processText, 300));
