@@ -123,8 +123,9 @@ function updateContentLanguage(lang) {
         if (translations[lang] && translations[lang][key]) {
             if (element.tagName === 'TEXTAREA' && element.hasAttribute('placeholder')) {
                 element.setAttribute('placeholder', translations[lang][key]);
-            } else if (element.tagName === 'BUTTON') { // Corrected line
-                element.value = translations[lang][key]; // Corrected line
+            } else if (element.tagName === 'BUTTON') {
+                // This is the corrected line for buttons
+                element.textContent = translations[lang][key]; 
             } else {
                 element.textContent = translations[lang][key];
             }
@@ -323,17 +324,3 @@ languageSelect.addEventListener('change', (event) => {
     localStorage.setItem('language', selectedLanguage); // Save selected language
     updateContentLanguage(selectedLanguage);
 });
-function updateContentLanguage(lang) {
-    document.querySelectorAll('[data-key]').forEach(element => {
-        const key = element.getAttribute('data-key');
-        if (translations[lang] && translations[lang][key]) {
-            if (element.tagName === 'TEXTAREA' && element.hasAttribute('placeholder')) {
-                element.setAttribute('placeholder', translations[lang][key]);
-            } else if (element.tagName === 'BUTTON') {
-                element.value = translations[lang][key];
-            } else {
-                element.textContent = translations[lang][key];
-            }
-        }
-    });
-}
