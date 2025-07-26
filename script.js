@@ -3,6 +3,7 @@ const previewOutput = document.getElementById('preview-output');
 const convertButton = document.getElementById('convert-button');
 const pasteButton = document.getElementById('paste-button');
 const darkModeSwitch = document.getElementById('dark-mode-switch');
+const languageSelect = document.getElementById('language-select'); // Get the language select element
 
 function debounce(func, delay) {
     let timeout;
@@ -92,21 +93,29 @@ previewOutput.addEventListener('scroll', () => handleScrollSync(previewOutput, i
 inputText.addEventListener('input', debouncedProcessText);
 
 pasteButton.addEventListener('click', async () => {
-    enableScrollingSync = false;
+    enableScrollingSync = false; // Temporarily disable to prevent jumpiness during paste
     try {
         const clipboardText = await navigator.clipboard.readText();
         inputText.value = clipboardText;
 
+        // Process text immediately after pasting
         await processText();
     } catch (err) {
         console.error('Failed to read clipboard contents: ', err);
         alert('Failed to paste from clipboard. Please ensure you have granted clipboard access or paste manually (Ctrl+V/Cmd+V).');
     } finally {
+        // Re-enable scroll sync after paste and processing
         enableScrollingSync = true;
     }
 });
 
 function downloadDocx() {
+    // Check if the input text area is empty
+    if (!inputText.value.trim()) {
+        alert("Please paste your equation or text into the input area first.");
+        return; // Stop the function if the input is empty
+    }
+
     if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
         MathJax.typesetPromise([previewOutput])
             .then(() => {
@@ -121,8 +130,9 @@ function downloadDocx() {
                     })
                     .then(response => {
                         if (!response.ok) {
+                            // User-friendly warning for conversion failure
                             return response.text().then(text => {
-                                throw new Error(`Server error: ${response.status} - ${text}`);
+                                throw new Error(`Conversion failed. Please try again later or contact support if the issue persists.`);
                             });
                         }
                         return response.blob();
@@ -138,16 +148,19 @@ function downloadDocx() {
                     })
                     .catch(error => {
                         console.error('Error during DOCX conversion or download:', error);
-                        alert("Conversion failed. Please ensure the server is running and Pandoc is correctly configured.");
+                        // User-friendly warning
+                        alert(error.message || "An unexpected error occurred during conversion. Please try again.");
                     });
 
             })
             .catch(err => {
                 console.error("MathJax render failed before conversion:", err);
-                alert("Math rendering failed. Please try again.");
+                // User-friendly warning for MathJax rendering
+                alert("Math rendering is not ready. Please wait a moment and try again.");
             });
     } else {
-        alert("MathJax is not loaded or ready. Cannot convert to DOCX.");
+        // User-friendly warning for MathJax not loaded
+        alert("Math rendering components are not loaded. Please wait a moment and try again.");
     }
 }
 
@@ -169,4 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
         darkModeSwitch.checked = true;
     }
     processText();
+});
+
+
+languageSelect.addEventListener('change', (event) => {
+    const selectedLanguage = event.target.value;
+    console.log(`Language changed to: ${selectedLanguage}`);
+    alert(`You selected: ${selectedLanguage.toUpperCase()}`);
 });
