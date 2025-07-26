@@ -23,11 +23,12 @@
 <body>
     <div class="main-header">
         <div class="header-content-left">
-            <h1 class="site-title">Math Text Formatter</h1>
+            <h1 class="site-title" data-key="site-title">Math Text Formatter</h1>
             <span class="email-address">info@aitext2wordconverter.com</span>
         </div>
         <div class="header-content-right">
             <div class="language-dropdown">
+                <label for="language-select" data-key="language-label">Language:</label>
                 <select id="language-select">
                     <option value="en">English</option>
                     <option value="es">Spanish</option>
@@ -37,9 +38,16 @@
                     <option value="ar">Arabic</option>
                 </select>
             </div>
+            <div class="dark-mode-toggle-container">
+                <label class="switch">
+                    <input type="checkbox" id="dark-mode-switch">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label" data-key="dark-mode-label">Dark Mode</span>
+            </div>
         </div>
     </div>
-    <p class="fun-sentence">Say goodbye to equation frustration! Now, effortlessly transform complex AI-generated math into perfectly formatted Word documents with a single click!</p>
+    <p class="fun-sentence" data-key="fun-sentence">Say goodbye to equation frustration! Now, effortlessly transform complex AI-generated math into perfectly formatted Word documents with a single click!</p>
     <div class="adsense-placeholder">
         <span>Ad</span>
     </div>
@@ -47,27 +55,20 @@
         <div class="main-content-wrapper">
             <div class="panel left-panel">
                 <div class="input-header">
-                    <h2>Paste Text from AI</h2>
-                    <button id="paste-button">Paste</button>
+                    <h2 data-key="paste-text-header">Paste Text from AI</h2>
+                    <button id="paste-button" type="button" data-key="paste-button">Paste</button>
                 </div>
-                <textarea id="input-text" placeholder="Paste your mathematical text here..."></textarea>
+                <textarea id="input-text" placeholder="Paste your mathematical text here..." data-key="input-placeholder"></textarea>
             </div>
             <div class="panel right-panel">
                 <div class="header">
-                    <h2>Preview</h2>
-                    <div class="dark-mode-toggle-container">
-                        <label class="switch">
-                            <input type="checkbox" id="dark-mode-switch">
-                            <span class="slider round"></span>
-                        </label>
-                        <span class="toggle-label">Dark Mode</span>
-                    </div>
-                    <button id="convert-button">Convert to Word (Download)</button>
+                    <h2 data-key="preview-header">Preview</h2>
+                    <button id="convert-button" type="button" data-key="convert-button">Convert to Word (Download)</button>
                 </div>
                 <div id="preview-output"></div>
             </div>
         </div>
-        <div class="footer-text">Developed by AMan_Punch Industries...</div>
+        <div class="footer-text" data-key="footer-text">©2025 Nyalweezy. All rights reserved.</div>
     </div>
     <script src="script.js"></script>
 </body>

@@ -54,6 +54,12 @@ body {
     color: #bbb;
 }
 
+.header-content-right { /* Added for flex layout of language and dark mode */
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Space between language dropdown and dark mode toggle */
+}
+
 .language-dropdown select {
     padding: 8px 30px 8px 12px;
     border: 1px solid #ccc;
@@ -66,6 +72,16 @@ body {
     background-repeat: no-repeat;
     background-position: right 10px center;
     background-size: 12px;
+}
+
+.language-dropdown label {
+    margin-right: 5px; /* Space between label and dropdown */
+    font-size: 1em;
+    color: #333;
+}
+
+.dark-mode .language-dropdown label {
+    color: #eee;
 }
 
 .dark-mode .language-dropdown select {
@@ -262,14 +278,14 @@ button:hover {
 .dark-mode-toggle-container {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 5px; /* Reduced gap to make it more compact */
 }
 
 .switch {
     position: relative;
     display: inline-block;
-    width: 40px;
-    height: 20px;
+    width: 34px; /* Smaller width */
+    height: 18px; /* Smaller height */
 }
 
 .switch input {
@@ -288,14 +304,14 @@ button:hover {
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-    border-radius: 20px;
+    border-radius: 18px; /* Adjusted border-radius for smaller size */
 }
 
 .slider:before {
     position: absolute;
     content: "";
-    height: 16px;
-    width: 16px;
+    height: 14px; /* Smaller circle */
+    width: 14px; /* Smaller circle */
     left: 2px;
     bottom: 2px;
     background-color: white;
@@ -313,9 +329,9 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-    -webkit-transform: translateX(20px);
-    -ms-transform: translateX(20px);
-    transform: translateX(20px);
+    -webkit-transform: translateX(16px); /* Adjusted for new width (34-14-2*2 = 16) */
+    -ms-transform: translateX(16px);
+    transform: translateX(16px);
 }
 
 body.dark-mode .slider {
@@ -337,7 +353,7 @@ body.dark-mode input:checked + .slider {
         overflow-y: auto;
     }
 
-    .left-panel,
+    .left-panel,\
     .right-panel {
         width: 100%;
         border-right: none;
