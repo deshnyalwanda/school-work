@@ -344,20 +344,24 @@ body.dark-mode input:checked + .slider {
 
 @media (max-width: 768px) {
     .page-frame {
-        padding: 4vw;
+        padding: 0 2vw; /* Adjusted padding for better mobile width utilization */
         padding-top: 0;
     }
 
     .main-content-wrapper {
         flex-direction: column;
         overflow-y: auto;
+        width: 100%; /* Ensure it's explicitly 100% */
+        box-sizing: border-box; /* Reiterate for clarity */
     }
 
-    .left-panel,\
+    .left-panel,
     .right-panel {
         width: 100%;
         border-right: none;
         border-bottom: 1px solid #ddd;
+        padding: 15px; /* Adjusted panel padding for mobile */
+        box-sizing: border-box; /* Ensure padding is included in the 100% width */
     }
 
     body.dark-mode .left-panel,
@@ -377,12 +381,14 @@ body.dark-mode input:checked + .slider {
     textarea,
     #preview-output {
         height: 250px;
+        width: 100%; /* Ensure it takes full width of its parent */
+        box-sizing: border-box; /* Crucial for including padding/border within the width */
     }
 }
 
 @media (max-width: 480px) {
     .panel {
-        padding: 15px;
+        padding: 10px; /* Further reduce padding for very small screens */
     }
 
     button {
@@ -409,5 +415,6 @@ body.dark-mode input:checked + .slider {
     .adsense-placeholder {
         min-height: 70px;
         margin: 10px auto 15px auto;
+        max-width: 100%; /* Ensure it fills the width */
     }
 }
