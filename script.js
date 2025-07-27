@@ -25,7 +25,7 @@ const translations = {
         'unexpected-error': 'An unexpected error occurred during conversion. Please try again.',
         'mathjax-not-ready': 'Math rendering is not ready. Please wait a moment and try again.',
         'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.',
-        'combined-footer-info': 'Contact us: aitext2wordconverter.com ©2025 Nyalweezy. All rights reserved.',
+        'combined-footer-info': 'Contact us: info@aitext2wordconverter.com  ©2025 Nyalweezy. All rights reserved.',
         'sample-header': 'Sample Input and Output'
     },
     es: {
