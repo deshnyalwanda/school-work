@@ -25,7 +25,7 @@ const translations = {
         'unexpected-error': 'An unexpected error occurred during conversion. Please try again.',
         'mathjax-not-ready': 'Math rendering is not ready. Please wait a moment and try again.',
         'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.',
-        'combined-footer-info': 'Contact us: info@aitext2wordconverter.com  ©2025 Nyalweezy. All rights reserved.',
+        'combined-footer-info': 'Contact us: info@aitext2wordconverter.com ©2025 Nyalweezy. All rights reserved.',
         'sample-header': 'Sample Input and Output'
     },
     es: {
@@ -113,7 +113,7 @@ const translations = {
         'unexpected-error': 'Hitilafu isiyotarajiwa imetokea wakati wa ubadilishaji. Tafadhali jaribu tena.',
         'mathjax-not-ready': 'Utoaji wa hisabati hauko tayari. Tafadhali subiri kidogo na ujaribu tena.',
         'mathjax-components-not-loaded': 'Vijenzi vya utoaji wa hisabati havijapakiwa. Tafadhali subiri kidogo na ujaribu tena.',
-        'combined-footer-info': 'Wasiliana nasi: aitext2wordconverter.com ©2025 Nyalweezy. Haki zote zimehifadhiwa.',
+        'combined-footer-info': 'Wasiliana nasi: aitext2wordconverter.com ©2025 Nyalweezy. Haki zote zimehifaserved.',
         'sample-header': 'Mfano wa Ingizo na Matokeo'
     },
     ar: {
@@ -137,6 +137,28 @@ const translations = {
         'mathjax-components-not-loaded': 'لم يتم تحميل مكونات عرض الرياضيات. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
         'combined-footer-info': 'تواصل معنا: aitext2wordconverter.com ©2025 Nyalweezy. جميع الحقوق محفوظة.',
         'sample-header': 'مثال على الإدخال والإخراج'
+    },
+    am: {
+        'site-title-link': 'የአይአይ ጽሑፍ ወደ ዎርድ መቀየሪያ',
+        'fun-sentence': 'የእኩልታ ብስጭትን ይሰናበቱ! አሁን፣ በAI የመነጩ ውስብስብ የሂሳብ ቀመሮችን በአንድ ጠቅታ ወደ ፍፁም የተቀረጹ የዎርድ ሰነዶች ያለልፋት ይቀይሩ!',
+        'language-label': 'ቋንቋ:',
+        'paste-text-header': 'ጽሑፍ ከአይአይ ለጥፍ',
+        'paste-button': 'ለጥፍ',
+        'input-placeholder': 'የሒሳብ ጽሑፍዎን እዚህ ይለጥፉ...',
+        'preview-header': 'ቅድመ እይታ',
+        'dark-mode-label': 'ጨለማ ሞድ',
+        'convert-button': 'ወደ Word ቀይር (አውርድ)',
+        'step1-text': 'በAI የመነጨውን የሂሳብ ጽሑፍ ከምንጩ ይቅዱ። ከAI ምላሽ ግርጌ ያለውን የቅጂ አዶ በመጠቀም መቅዳትዎን ያረጋግጡ።',
+        'step2-text': 'ጽሑፉን ወደ ግብዓት ቦታው ይለጥፉ እና የተቀረጸውን ውፅዓት ይመልከቱ።',
+        'step3-text': 'የእርስዎን DOCX ፋይል ለማግኘት "ወደ Word ቀይር (አውርድ)" የሚለውን ይጫኑ።',
+        'paste-error': 'ከቅንጥብ ሰሌዳው ላይ ለመለጠፍ አልተሳካም። እባክዎን የቅንጥብ ሰሌዳ መዳረሻ እንደሰጡ ያረጋግጡ ወይም እራስዎ ይለጥፉ (Ctrl+V/Cmd+V)።',
+        'empty-input-alert': 'እባክዎ መጀመሪያ እኩልታዎን ወይም ጽሑፍዎን ወደ ግብዓት ቦታው ይለጥፉ።',
+        'conversion-failed': 'መቀየር አልተሳካም። እባክዎ ቆይተው እንደገና ይሞክሩ ወይም ችግሩ ከቀጠለ ድጋፍን ያግኙ።',
+        'unexpected-error': 'በመቀየር ወቅት ያልተጠበቀ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።',
+        'mathjax-not-ready': 'የሂሳብ ማሳያው ገና ዝግጁ አይደለም። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።',
+        'mathjax-components-not-loaded': 'የሂሳብ ማሳያ ክፍሎች አልተጫኑም። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።',
+        'combined-footer-info': 'ያግኙን: aitext2wordconverter.com ©2025 Nyalweezy. ሁሉም መብቶች የተጠበቁ ናቸው።',
+        'sample-header': 'የግቤት እና የውጤት ምሳሌ'
     }
 };
 
@@ -191,32 +213,20 @@ function convertLaTeX(input) {
 }
 
 function convertMatrixStyle(input) {
-    // This regex now specifically captures:
-    // Group 1: The initial '$$'
-    // Group 2: The preamble (e.g., 'A_{3} = ' - including the equals sign)
-    // Group 3: The matrix body content
-    // Group 4: The final '$$' (which is removed from its original position)
     const matrixRegex = /(\$\$)\s*([\s\S]*?)\s*\\begin\{bmatrix\}([\s\S]*?)\\end\{bmatrix\}\s*(\$\$)/g;
 
     return input.replace(matrixRegex, (match, initialDollar, preambleContent, matrixBody, finalDollar) => {
-        // Keep the preamble content as is, including the '='
         let cleanedPreamble = preambleContent.trim();
 
         const rows = matrixBody.split('\\\\')
             .map(row => row.trim())
             .filter(row => row.length > 0);
 
-        // Format each row into its own bmatrix block, each wrapped in $$...$$
         const formattedMatrices = rows.map(row => `$$\\begin{bmatrix}\n${row}\n\\end{bmatrix}$$`);
 
-        // Assemble the final string:
-        // Initial $$ + Preamble (as captured) + closing $$ for the preamble
-        // Followed by a newline
-        // Followed by the joined individual matrix rows (each with its own $$...$$), separated by blank lines
         if (cleanedPreamble) {
             return `${initialDollar}${cleanedPreamble} $$\n${formattedMatrices.join('\n\n')}`;
         } else {
-            // If there was no preamble, just return the formatted matrices directly
             return formattedMatrices.join('\n\n');
         }
     });
@@ -254,13 +264,9 @@ function processText() {
 
     if (isDeepseekStyle(rawText)) {
         processed = convertLaTeX(rawText);
-        console.log("Converted from DeepSeek style.");
     }
 
-    // It's crucial to call convertMatrixStyle AFTER convertLaTeX
-    // to ensure deepseek's \[ \] are already $$ $$
     processed = convertMatrixStyle(processed);
-    console.log("Converted matrix style.");
 
     const html = marked.parse(processed);
     previewOutput.innerHTML = html;
@@ -278,7 +284,6 @@ function processText() {
                 enableScrollingSync = true;
             })
             .catch((err) => {
-                console.error('MathJax typesetting failed:', err);
                 enableScrollingSync = true;
             });
     } else {
@@ -300,7 +305,6 @@ pasteButton.addEventListener('click', async () => {
         inputText.value = clipboardText;
         await processText();
     } catch (err) {
-        console.error('Failed to read clipboard contents: ', err);
         alert(translations[languageSelect.value]['paste-error']);
     }
 });
@@ -341,12 +345,10 @@ function downloadDocx() {
                         URL.revokeObjectURL(link.href);
                     })
                     .catch(error => {
-                        console.error('Error during DOCX conversion or download:', error);
                         alert(error.message || translations[languageSelect.value]['unexpected-error']);
                     });
             })
             .catch(err => {
-                console.error("MathJax render failed before conversion:", err);
                 alert(translations[languageSelect.value]['mathjax-not-ready']);
             });
     } else {
@@ -379,7 +381,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 languageSelect.addEventListener('change', (event) => {
     const selectedLanguage = event.target.value;
-    console.log(`Language changed to: ${selectedLanguage}`);
     localStorage.setItem('language', selectedLanguage);
     updateContentLanguage(selectedLanguage);
     processText();
