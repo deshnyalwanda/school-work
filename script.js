@@ -3,12 +3,12 @@ const previewOutput = document.getElementById('preview-output');
 const convertButton = document.getElementById('convert-button');
 const pasteButton = document.getElementById('paste-button');
 const darkModeSwitch = document.getElementById('dark-mode-switch');
-const languageSelect = document.getElementById('language-select'); // Get the language select element
+const languageSelect = document.getElementById('language-select');
 
 // Translations object
 const translations = {
     en: {
-        'site-title': 'Math Text Formatter',
+        'site-title-link': 'AI Text 2 Word Converter',
         'fun-sentence': 'Say goodbye to equation frustration! Now, effortlessly transform complex AI-generated math into perfectly formatted Word documents with a single click!',
         'language-label': 'Language:',
         'paste-text-header': 'Paste Text from AI',
@@ -17,16 +17,20 @@ const translations = {
         'preview-header': 'Preview',
         'dark-mode-label': 'Dark Mode',
         'convert-button': 'Convert to Word (Download)',
-        'footer-text': '©2025 Nyalweezy. All rights reserved.',
+        'step1-text': 'Copy the AI-generated mathematical text from its source. Make sure to copy using copy icon at the bottom of the AI response.', // MODIFIED LINE
+        'step2-text': 'Paste the text into the input area and preview the formatted output.',
+        'step3-text': 'Click "Convert to Word (Download)" to get your DOCX file.',
         'paste-error': 'Failed to paste from clipboard. Please ensure you have granted clipboard access or paste manually (Ctrl+V/Cmd+V).',
         'empty-input-alert': 'Please paste your equation or text into the input area first.',
         'conversion-failed': 'Conversion failed. Please try again later or contact support if the issue persists.',
         'unexpected-error': 'An unexpected error occurred during conversion. Please try again.',
         'mathjax-not-ready': 'Math rendering is not ready. Please wait a moment and try again.',
-        'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.'
+        'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.',
+        'combined-footer-info': 'Contact us: aitext2wordconverter.com ©2025 Nyalweezy. All rights reserved.', // NEW COMBINED KEY
+        'sample-header': 'Sample Input and Output' // NEW KEY
     },
     es: {
-        'site-title': 'Formateador de Texto Matemático',
+        'site-title-link': 'Convertidor de Texto AI a Word',
         'fun-sentence': '¡Diga adiós a la frustración con las ecuaciones! ¡Ahora, transforme sin esfuerzo las matemáticas complejas generadas por IA en documentos de Word perfectamente formateados con un solo clic!',
         'language-label': 'Idioma:',
         'paste-text-header': 'Pegar Texto de IA',
@@ -35,16 +39,20 @@ const translations = {
         'preview-header': 'Vista Previa',
         'dark-mode-label': 'Modo Oscuro',
         'convert-button': 'Convertir a Word (Descargar)',
-        'footer-text': '©2025 Nyalweezy. Todos los derechos reservados.',
+        'step1-text': 'Copie el texto matemático generado por IA de su origen. Asegúrese de copiar utilizando el icono de copiar en la parte inferior de la respuesta de la IA.', // MODIFIED LINE
+        'step2-text': 'Pegue el texto en el área de entrada y previsualice la salida formateada.',
+        'step3-text': 'Haga clic en "Convertir a Word (Descargar)" para obtener su archivo DOCX.',
         'paste-error': 'Error al pegar desde el portapapeles. Asegúrese de haber concedido acceso al portapapeles o pegue manualmente (Ctrl+V/Cmd+V).',
         'empty-input-alert': 'Por favor, pegue su ecuación o texto en el área de entrada primero.',
         'conversion-failed': 'La conversión falló. Por favor, inténtelo de nuevo más tarde o póngase en contacto con el soporte si el problema persiste.',
         'unexpected-error': 'Ocurrió un error inesperado durante la conversión. Por favor, inténtelo de nuevo.',
         'mathjax-not-ready': 'La renderización de las matemáticas no está lista. Por favor, espere un momento e inténtelo de nuevo.',
-        'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento e inténtelo de nuevo.'
+        'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento y inténtelo de nuevo.',
+        'combined-footer-info': 'Contáctenos: aitext2wordconverter.com ©2025 Nyalweezy. Todos los derechos reservados.', // NEW COMBINED KEY
+        'sample-header': 'Ejemplo de Entrada y Salida' // NEW KEY
     },
     fr: {
-        'site-title': 'Formateur de Texte Mathématique',
+        'site-title-link': 'Convertisseur de Texte IA en Word',
         'fun-sentence': 'Dites adieu à la frustration des équations ! Transformez désormais sans effort les mathématiques complexes générées par l\'IA en documents Word parfaitement formatés en un seul clic !',
         'language-label': 'Langue :',
         'paste-text-header': 'Coller le texte de l\'IA',
@@ -53,16 +61,20 @@ const translations = {
         'preview-header': 'Aperçu',
         'dark-mode-label': 'Mode Sombre',
         'convert-button': 'Convertir en Word (Télécharger)',
-        'footer-text': '©2025 Nyalweezy. Tous droits réservés.',
+        'step1-text': 'Copiez le texte mathématique généré par l\'IA de sa source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la réponse de l\'IA.', // MODIFIED LINE
+        'step2-text': 'Collez le texte dans la zone de saisie et prévisualisez le résultat formaté.',
+        'step3-text': 'Cliquez sur "Convertir en Word (Télécharger)" pour obtenir votre fichier DOCX.',
         'paste-error': 'Échec de la lecture du contenu du presse-papiers. Assurez-vous d\'avoir accordé l\'accès au presse-papiers ou collez manuellement (Ctrl+V/Cmd+V).',
         'empty-input-alert': 'Veuillez d\'abord coller votre équation ou votre texte dans la zone de saisie.',
         'conversion-failed': 'La conversion a échoué. Veuillez réessayer plus tard ou contacter le support si le problème persiste.',
         'unexpected-error': 'Une erreur inattendue est survenue lors de la conversion. Veuillez réessayer.',
         'mathjax-not-ready': 'Le rendu mathématique n\'est pas prêt. Veuillez patienter un instant et réessayer.',
-        'mathjax-components-not-loaded': 'Les composants de rendu mathématique ne sont pas chargés. Veuillez patienter un instant et réessayer.'
+        'mathjax-components-not-loaded': 'Les composants de rendu mathématique ne sont pas chargés. Veuillez patienter un instant et réessayer.',
+        'combined-footer-info': 'Contactez-nous : aitext2wordconverter.com ©2025 Nyalweezy. Tous droits réservés.', // NEW COMBINED KEY
+        'sample-header': 'Exemple d\'entrée et de sortie' // NEW KEY
     },
     de: {
-        'site-title': 'Mathe-Text-Formatierer',
+        'site-title-link': 'KI Text zu Word Konverter',
         'fun-sentence': 'Verabschieden Sie sich von der Gleichungsfrustration! Verwandeln Sie jetzt mühelos komplexe KI-generierte Mathematik mit einem einzigen Klick in perfekt formatierte Word-Dokumente!',
         'language-label': 'Sprache:',
         'paste-text-header': 'Text von KI einfügen',
@@ -71,16 +83,20 @@ const translations = {
         'preview-header': 'Vorschau',
         'dark-mode-label': 'Dunkelmodus',
         'convert-button': 'In Word konvertieren (Herunterladen)',
-        'footer-text': '©2025 Nyalweezy. Alle Rechte vorbehalten.',
+        'step1-text': 'Kopieren Sie den von der KI generierten mathematischen Text aus der Quelle. Stellen Sie sicher, dass Sie das Kopiersymbol am unteren Rand der KI-Antwort verwenden.', // MODIFIED LINE
+        'step2-text': 'Fügen Sie den Text in das Eingabefeld ein und zeigen Sie die formatierte Ausgabe in der Vorschau an.',
+        'step3-text': 'Klicken Sie auf "In Word konvertieren (Herunterladen)", um Ihre DOCX-Datei zu erhalten.',
         'paste-error': 'Fehler beim Lesen des Inhalts der Zwischenablage. Stellen Sie sicher, dass Sie den Zugriff auf die Zwischenablage gewährt haben oder fügen Sie manuell ein (Strg+V/Cmd+V).',
         'empty-input-alert': 'Bitte fügen Sie zuerst Ihre Gleichung oder Ihren Text in das Eingabefeld ein.',
         'conversion-failed': 'Konvertierung fehlgeschlagen. Bitte versuchen Sie es später erneut oder kontaktieren Sie den Support, wenn das Problem weiterhin besteht.',
         'unexpected-error': 'Während der Konvertierung ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut.',
         'mathjax-not-ready': 'Mathematisches Rendering ist nicht bereit. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
-        'mathjax-components-not-loaded': 'Mathematische Rendering-Komponenten sind nicht geladen. Bitte warten Sie einen Moment und versuchen Sie es erneut.'
+        'mathjax-components-not-loaded': 'Mathematische Rendering-Komponenten sind nicht geladen. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
+        'combined-footer-info': 'Kontaktieren Sie uns: aitext2wordconverter.com ©2025 Nyalweezy. Alle Rechte vorbehalten.', // NEW COMBINED KEY
+        'sample-header': 'Beispiel für Eingabe und Ausgabe' // NEW KEY
     },
     sw: {
-        'site-title': 'Kifomu cha Maandishi ya Hisabati',
+        'site-title-link': 'Kigeuzi cha Maandishi ya AI kwenda Word',
         'fun-sentence': 'Sema kwaheri kwa kuchanganyikiwa kwa milinganyo! Sasa, badilisha kwa urahisi hisabati changamano iliyozalishwa na AI kuwa hati za Word zilizopangiliwa kikamilifu kwa mbofyo mmoja!',
         'language-label': 'Lugha:',
         'paste-text-header': 'Bandika Maandishi kutoka AI',
@@ -89,16 +105,20 @@ const translations = {
         'preview-header': 'Onyesho la Kukagua',
         'dark-mode-label': 'Hali ya Giza',
         'convert-button': 'Badilisha hadi Word (Pakua)',
-        'footer-text': '©2025 Nyalweezy. Haki zote zimehifadhiwa.',
+        'step1-text': 'Nakili maandishi ya hisabati yaliyozalishwa na AI kutoka chanzo chake. Hakikisha kunakili kwa kutumia aikoni ya kunakili iliyo chini ya jibu la AI.', // MODIFIED LINE
+        'step2-text': 'Bandika maandishi kwenye eneo la kuingiza na uangalie onyesho la kukagua lililopangiliwa.',
+        'step3-text': 'Bofya "Badilisha hadi Word (Pakua)" ili kupata faili yako ya DOCX.',
         'paste-error': 'Imeshindwa kusoma yaliyomo kwenye ubao wa kunakili. Tafadhali hakikisha umetoa ruhusa ya ufikiaji wa ubao wa kunakili au bandika mwenyewe (Ctrl+V/Cmd+V).',
         'empty-input-alert': 'Tafadhali bandika mlinganyo au maandishi yako kwenye eneo la kuingiza kwanza.',
         'conversion-failed': 'Ubadilishaji umeshindwa. Tafadhali jaribu tena baadaye au wasiliana na usaidizi ikiwa tatizo litaendelea.',
         'unexpected-error': 'Hitilafu isiyotarajiwa imetokea wakati wa ubadilishaji. Tafadhali jaribu tena.',
         'mathjax-not-ready': 'Utoaji wa hisabati hauko tayari. Tafadhali subiri kidogo na ujaribu tena.',
-        'mathjax-components-not-loaded': 'Vijenzi vya utoaji wa hisabati havijapakiwa. Tafadhali subiri kidogo na ujaribu tena.'
+        'mathjax-components-not-loaded': 'Vijenzi vya utoaji wa hisabati havijapakiwa. Tafadhali subiri kidogo na ujaribu tena.',
+        'combined-footer-info': 'Wasiliana nasi: aitext2wordconverter.com ©2025 Nyalweezy. Haki zote zimehifadhiwa.', // NEW COMBINED KEY
+        'sample-header': 'Mfano wa Ingizo na Matokeo' // NEW KEY
     },
     ar: {
-        'site-title': 'منسق النصوص الرياضية',
+        'site-title-link': 'محول النص الرياضي بالذكاء الاصطناعي إلى Word',
         'fun-sentence': 'قل وداعًا لإحباط المعادلات! الآن، حوّل بسهولة المعادلات الرياضية المعقدة التي تم إنشاؤها بواسطة الذكاء الاصطناعي إلى مستندات Word منسقة بشكل مثالي بنقرة واحدة!',
         'language-label': 'اللغة:',
         'paste-text-header': 'لصق النص من الذكاء الاصطناعي',
@@ -107,13 +127,17 @@ const translations = {
         'preview-header': 'معاينة',
         'dark-mode-label': 'الوضع الداكن',
         'convert-button': 'تحويل إلى Word (تنزيل)',
-        'footer-text': '©2025 Nyalweezy. جميع الحقوق محفوظة.',
+        'step1-text': 'انسخ النص الرياضي الذي تم إنشاؤه بواسطة الذكاء الاصطناعي من مصدره. تأكد من النسخ باستخدام أيقونة النسخ في الجزء السفلي من رد الذكاء الاصطناعي.', // MODIFIED LINE
+        'step2-text': 'الصق النص في منطقة الإدخال وقم بمعاينة الإخراج المنسق.',
+        'step3-text': 'انقر فوق "تحويل إلى Word (تنزيل)" للحصول على ملف DOCX الخاص بك.',
         'paste-error': 'فشل قراءة محتويات الحافظة. يرجى التأكد من منح الإذن بالوصول إلى الحافظة أو اللصق يدويًا (Ctrl+V/Cmd+V).',
         'empty-input-alert': 'الرجاء لصق المعادلة أو النص في منطقة الإدخال أولاً.',
         'conversion-failed': 'فشل التحويل. يرجى المحاولة مرة أخرى لاحقًا أو الاتصال بالدعم إذا استمرت المشكلة.',
         'unexpected-error': 'حدث خطأ غير متوقع أثناء التحويل. يرجى المحاولة مرة أخرى.',
         'mathjax-not-ready': 'عرض الرياضيات ليس جاهزًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
-        'mathjax-components-not-loaded': 'لم يتم تحميل مكونات عرض الرياضيات. يرجى الانتظار لحظة والمحاولة مرة أخرى.'
+        'mathjax-components-not-loaded': 'لم يتم تحميل مكونات عرض الرياضيات. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
+        'combined-footer-info': 'تواصل معنا: aitext2wordconverter.com ©2025 Nyalweezy. جميع الحقوق محفوظة.', // NEW COMBINED KEY
+        'sample-header': 'مثال على الإدخال والإخراج' // NEW KEY
     }
 };
 
@@ -124,8 +148,7 @@ function updateContentLanguage(lang) {
             if (element.tagName === 'TEXTAREA' && element.hasAttribute('placeholder')) {
                 element.setAttribute('placeholder', translations[lang][key]);
             } else if (element.tagName === 'BUTTON') {
-                // This is the corrected line for buttons
-                element.textContent = translations[lang][key]; 
+                element.textContent = translations[lang][key];
             } else {
                 element.textContent = translations[lang][key];
             }
@@ -169,12 +192,35 @@ function convertLaTeX(input) {
     return output;
 }
 
-let lastInputScrollTop = 0;
-let lastPreviewScrollTop = 0;
+let isProgrammaticScroll = false;
+let enableScrollingSync = true; // This flag will control all scroll sync operations.
+
+function handleScrollSync(sourceElement, targetElement) {
+    if (enableScrollingSync && !isProgrammaticScroll) {
+        isProgrammaticScroll = true; // Set to true to prevent reciprocal triggering
+
+        const sourceScrollPercentage = sourceElement.scrollTop / (sourceElement.scrollHeight - sourceElement.clientHeight);
+        const targetScrollHeight = targetElement.scrollHeight;
+        const targetClientHeight = targetElement.clientHeight;
+
+        if (!isNaN(sourceScrollPercentage) && (targetScrollHeight - targetClientHeight) > 0) {
+            targetElement.scrollTop = sourceScrollPercentage * (targetScrollHeight - targetClientHeight);
+        }
+
+        // Use setTimeout to allow the current scroll event to fully propagate
+        // before re-enabling programmatic scrolls. This helps prevent flicker/jumping.
+        setTimeout(() => {
+            isProgrammaticScroll = false;
+        }, 50); // A small delay to ensure the scroll event propagates
+    }
+}
+
 
 function processText() {
-    lastInputScrollTop = inputText.scrollTop;
-    lastPreviewScrollTop = previewOutput.scrollTop;
+    enableScrollingSync = false; // Disable scroll sync during processing to prevent jumps
+
+    const initialInputScrollPercentage = inputText.scrollTop / (inputText.scrollHeight - inputText.clientHeight);
+    const initialPreviewScrollPercentage = previewOutput.scrollTop / (previewOutput.scrollHeight - previewOutput.clientHeight);
 
     const rawText = inputText.value;
     let processed = rawText;
@@ -185,36 +231,33 @@ function processText() {
     }
 
     const html = marked.parse(processed);
-    previewOutput.innerHTML = html;
+    previewOutput.innerHTML = html; // This might change scrollHeight
 
     if (window.MathJax) {
         MathJax.typesetPromise([previewOutput])
             .then(() => {
-                inputText.scrollTop = lastInputScrollTop;
-                previewOutput.scrollTop = lastPreviewScrollTop;
+                // After MathJax renders and potentially changes content height,
+                // re-adjust scroll positions based on the saved percentages.
+                if (!isNaN(initialInputScrollPercentage) && (inputText.scrollHeight - inputText.clientHeight) > 0) {
+                    inputText.scrollTop = initialInputScrollPercentage * (inputText.scrollHeight - inputText.clientHeight);
+                }
+
+                if (!isNaN(initialPreviewScrollPercentage) && (previewOutput.scrollHeight - previewOutput.clientHeight) > 0) {
+                    previewOutput.scrollTop = initialPreviewScrollPercentage * (previewOutput.scrollHeight - previewOutput.clientHeight);
+                }
+                enableScrollingSync = true; // Re-enable sync after all adjustments
             })
-            .catch((err) =>
-                console.error('MathJax typesetting failed:', err)
-            );
+            .catch((err) => {
+                console.error('MathJax typesetting failed:', err);
+                enableScrollingSync = true; // Re-enable sync even on error
+            });
     } else {
-        inputText.scrollTop = lastInputScrollTop;
-        previewOutput.scrollTop = lastPreviewScrollTop;
+        // If MathJax is not available, just re-enable sync
+        enableScrollingSync = true;
     }
 }
 
 const debouncedProcessText = debounce(processText, 300);
-
-let isProgrammaticScroll = false;
-let enableScrollingSync = true;
-
-function handleScrollSync(sourceElement, targetElement) {
-    if (enableScrollingSync && !isProgrammaticScroll) {
-        isProgrammaticScroll = true;
-        const scrollPercentage = sourceElement.scrollTop / (sourceElement.scrollHeight - sourceElement.clientHeight);
-        targetElement.scrollTop = scrollPercentage * (targetElement.scrollHeight - targetElement.clientHeight);
-        isProgrammaticScroll = false;
-    }
-}
 
 inputText.addEventListener('scroll', () => handleScrollSync(inputText, previewOutput));
 previewOutput.addEventListener('scroll', () => handleScrollSync(previewOutput, inputText));
@@ -222,19 +265,20 @@ previewOutput.addEventListener('scroll', () => handleScrollSync(previewOutput, i
 inputText.addEventListener('input', debouncedProcessText);
 
 pasteButton.addEventListener('click', async () => {
-    enableScrollingSync = false; // Temporarily disable to prevent jumpiness during paste
+    enableScrollingSync = false; // Disable sync immediately on paste click
     try {
         const clipboardText = await navigator.clipboard.readText();
         inputText.value = clipboardText;
 
-        // Process text immediately after pasting
+        // Process text immediately after pasting, which will re-enable enableScrollingSync
         await processText();
     } catch (err) {
         console.error('Failed to read clipboard contents: ', err);
         alert(translations[languageSelect.value]['paste-error']);
     } finally {
-        // Re-enable scroll sync after paste and processing
-        enableScrollingSync = true;
+        // No need to re-enable here, as processText() will handle it.
+        // But if processText() doesn't run (e.g., if input is empty after paste),
+        // we might need a fallback. For now, assume processText always runs.
     }
 });
 
@@ -314,7 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const savedLanguage = localStorage.getItem('language') || 'en';
     languageSelect.value = savedLanguage;
     updateContentLanguage(savedLanguage);
-    processText();
+    processText(); // Call processText on DOMContentLoaded to initialize preview and scroll sync
 });
 
 
@@ -323,4 +367,5 @@ languageSelect.addEventListener('change', (event) => {
     console.log(`Language changed to: ${selectedLanguage}`);
     localStorage.setItem('language', selectedLanguage); // Save selected language
     updateContentLanguage(selectedLanguage);
+    processText(); // Call processText after language change to re-render preview and maintain scroll sync
 });
