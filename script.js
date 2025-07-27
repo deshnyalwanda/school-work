@@ -5,7 +5,6 @@ const pasteButton = document.getElementById('paste-button');
 const darkModeSwitch = document.getElementById('dark-mode-switch');
 const languageSelect = document.getElementById('language-select');
 
-// Translations object
 const translations = {
     en: {
         'site-title-link': 'AI Text 2 Word Converter',
@@ -17,7 +16,7 @@ const translations = {
         'preview-header': 'Preview',
         'dark-mode-label': 'Dark Mode',
         'convert-button': 'Convert to Word (Download)',
-        'step1-text': 'Copy the AI-generated mathematical text from its source. Make sure to copy using copy icon at the bottom of the AI response.', // MODIFIED LINE
+        'step1-text': 'Copy the AI-generated mathematical text from its source. Make sure to copy using copy icon at the bottom of the AI response.',
         'step2-text': 'Paste the text into the input area and preview the formatted output.',
         'step3-text': 'Click "Convert to Word (Download)" to get your DOCX file.',
         'paste-error': 'Failed to paste from clipboard. Please ensure you have granted clipboard access or paste manually (Ctrl+V/Cmd+V).',
@@ -26,8 +25,8 @@ const translations = {
         'unexpected-error': 'An unexpected error occurred during conversion. Please try again.',
         'mathjax-not-ready': 'Math rendering is not ready. Please wait a moment and try again.',
         'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.',
-        'combined-footer-info': 'Contact us: aitext2wordconverter.com ©2025 Nyalweezy. All rights reserved.', // NEW COMBINED KEY
-        'sample-header': 'Sample Input and Output' // NEW KEY
+        'combined-footer-info': 'Contact us: aitext2wordconverter.com ©2025 Nyalweezy. All rights reserved.',
+        'sample-header': 'Sample Input and Output'
     },
     es: {
         'site-title-link': 'Convertidor de Texto AI a Word',
@@ -39,7 +38,7 @@ const translations = {
         'preview-header': 'Vista Previa',
         'dark-mode-label': 'Modo Oscuro',
         'convert-button': 'Convertir a Word (Descargar)',
-        'step1-text': 'Copie el texto matemático generado por IA de su origen. Asegúrese de copiar utilizando el icono de copiar en la parte inferior de la respuesta de la IA.', // MODIFIED LINE
+        'step1-text': 'Copie el texto matemático generado por IA de su origen. Asegúrese de copiar utilizando el icono de copiar en la parte inferior de la respuesta de la IA.',
         'step2-text': 'Pegue el texto en el área de entrada y previsualice la salida formateada.',
         'step3-text': 'Haga clic en "Convertir a Word (Descargar)" para obtener su archivo DOCX.',
         'paste-error': 'Error al pegar desde el portapapeles. Asegúrese de haber concedido acceso al portapapeles o pegue manualmente (Ctrl+V/Cmd+V).',
@@ -48,8 +47,8 @@ const translations = {
         'unexpected-error': 'Ocurrió un error inesperado durante la conversión. Por favor, inténtelo de nuevo.',
         'mathjax-not-ready': 'La renderización de las matemáticas no está lista. Por favor, espere un momento e inténtelo de nuevo.',
         'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento y inténtelo de nuevo.',
-        'combined-footer-info': 'Contáctenos: aitext2wordconverter.com ©2025 Nyalweezy. Todos los derechos reservados.', // NEW COMBINED KEY
-        'sample-header': 'Ejemplo de Entrada y Salida' // NEW KEY
+        'combined-footer-info': 'Contáctenos: aitext2wordconverter.com ©2025 Nyalweezy. Todos los derechos reservados.',
+        'sample-header': 'Ejemplo de Entrada y Salida'
     },
     fr: {
         'site-title-link': 'Convertisseur de Texte IA en Word',
@@ -57,21 +56,21 @@ const translations = {
         'language-label': 'Langue :',
         'paste-text-header': 'Coller le texte de l\'IA',
         'paste-button': 'Coller',
-        'input-placeholder': 'Collez votre texte mathématique ici...',
+        'input-placeholder': 'Collez votre texte mathématique aquí...',
         'preview-header': 'Aperçu',
         'dark-mode-label': 'Mode Sombre',
         'convert-button': 'Convertir en Word (Télécharger)',
-        'step1-text': 'Copiez le texte mathématique généré par l\'IA de sa source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la réponse de l\'IA.', // MODIFIED LINE
-        'step2-text': 'Collez le texte dans la zone de saisie et prévisualisez le résultat formaté.',
-        'step3-text': 'Cliquez sur "Convertir en Word (Télécharger)" pour obtenir votre fichier DOCX.',
+        'step1-text': 'Copiez le texte mathématique generado por l\'IA de su source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la réponse de l\'IA.',
+        'step2-text': 'Collez le texto en la zona de entrada y previsualice el resultado formateado.',
+        'step3-text': 'Haga clic en "Convertir a Word (Descargar)" para obtener su archivo DOCX.',
         'paste-error': 'Échec de la lecture du contenu du presse-papiers. Assurez-vous d\'avoir accordé l\'accès au presse-papiers ou collez manuellement (Ctrl+V/Cmd+V).',
         'empty-input-alert': 'Veuillez d\'abord coller votre équation ou votre texte dans la zone de saisie.',
         'conversion-failed': 'La conversion a échoué. Veuillez réessayer plus tard ou contacter le support si le problème persiste.',
         'unexpected-error': 'Une erreur inattendue est survenue lors de la conversion. Veuillez réessayer.',
         'mathjax-not-ready': 'Le rendu mathématique n\'est pas prêt. Veuillez patienter un instant et réessayer.',
         'mathjax-components-not-loaded': 'Les composants de rendu mathématique ne sont pas chargés. Veuillez patienter un instant et réessayer.',
-        'combined-footer-info': 'Contactez-nous : aitext2wordconverter.com ©2025 Nyalweezy. Tous droits réservés.', // NEW COMBINED KEY
-        'sample-header': 'Exemple d\'entrée et de sortie' // NEW KEY
+        'combined-footer-info': 'Contactez-nous : aitext2wordconverter.com ©2025 Nyalweezy. Tous droits réservés.',
+        'sample-header': 'Exemple d\'entrée et de sortie'
     },
     de: {
         'site-title-link': 'KI Text zu Word Konverter',
@@ -83,7 +82,7 @@ const translations = {
         'preview-header': 'Vorschau',
         'dark-mode-label': 'Dunkelmodus',
         'convert-button': 'In Word konvertieren (Herunterladen)',
-        'step1-text': 'Kopieren Sie den von der KI generierten mathematischen Text aus der Quelle. Stellen Sie sicher, dass Sie das Kopiersymbol am unteren Rand der KI-Antwort verwenden.', // MODIFIED LINE
+        'step1-text': 'Kopieren Sie den von der KI generierten mathematischen Text aus der Quelle. Stellen Sie sicher, dass Sie das Kopiersymbol am unteren Rand der KI-Antwort verwenden.',
         'step2-text': 'Fügen Sie den Text in das Eingabefeld ein und zeigen Sie die formatierte Ausgabe in der Vorschau an.',
         'step3-text': 'Klicken Sie auf "In Word konvertieren (Herunterladen)", um Ihre DOCX-Datei zu erhalten.',
         'paste-error': 'Fehler beim Lesen des Inhalts der Zwischenablage. Stellen Sie sicher, dass Sie den Zugriff auf die Zwischenablage gewährt haben oder fügen Sie manuell ein (Strg+V/Cmd+V).',
@@ -92,8 +91,8 @@ const translations = {
         'unexpected-error': 'Während der Konvertierung ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut.',
         'mathjax-not-ready': 'Mathematisches Rendering ist nicht bereit. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
         'mathjax-components-not-loaded': 'Mathematische Rendering-Komponenten sind nicht geladen. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
-        'combined-footer-info': 'Kontaktieren Sie uns: aitext2wordconverter.com ©2025 Nyalweezy. Alle Rechte vorbehalten.', // NEW COMBINED KEY
-        'sample-header': 'Beispiel für Eingabe und Ausgabe' // NEW KEY
+        'combined-footer-info': 'Kontaktieren Sie uns: aitext2wordconverter.com ©2025 Nyalweezy. Alle Rechte vorbehalten.',
+        'sample-header': 'Beispiel für Eingabe und Ausgabe'
     },
     sw: {
         'site-title-link': 'Kigeuzi cha Maandishi ya AI kwenda Word',
@@ -105,7 +104,7 @@ const translations = {
         'preview-header': 'Onyesho la Kukagua',
         'dark-mode-label': 'Hali ya Giza',
         'convert-button': 'Badilisha hadi Word (Pakua)',
-        'step1-text': 'Nakili maandishi ya hisabati yaliyozalishwa na AI kutoka chanzo chake. Hakikisha kunakili kwa kutumia aikoni ya kunakili iliyo chini ya jibu la AI.', // MODIFIED LINE
+        'step1-text': 'Nakili maandishi ya hisabati yaliyozalishwa na AI kutoka chanzo chake. Hakikisha kunakili kwa kutumia aikoni ya kunakili iliyo chini ya jibu la AI.',
         'step2-text': 'Bandika maandishi kwenye eneo la kuingiza na uangalie onyesho la kukagua lililopangiliwa.',
         'step3-text': 'Bofya "Badilisha hadi Word (Pakua)" ili kupata faili yako ya DOCX.',
         'paste-error': 'Imeshindwa kusoma yaliyomo kwenye ubao wa kunakili. Tafadhali hakikisha umetoa ruhusa ya ufikiaji wa ubao wa kunakili au bandika mwenyewe (Ctrl+V/Cmd+V).',
@@ -114,8 +113,8 @@ const translations = {
         'unexpected-error': 'Hitilafu isiyotarajiwa imetokea wakati wa ubadilishaji. Tafadhali jaribu tena.',
         'mathjax-not-ready': 'Utoaji wa hisabati hauko tayari. Tafadhali subiri kidogo na ujaribu tena.',
         'mathjax-components-not-loaded': 'Vijenzi vya utoaji wa hisabati havijapakiwa. Tafadhali subiri kidogo na ujaribu tena.',
-        'combined-footer-info': 'Wasiliana nasi: aitext2wordconverter.com ©2025 Nyalweezy. Haki zote zimehifadhiwa.', // NEW COMBINED KEY
-        'sample-header': 'Mfano wa Ingizo na Matokeo' // NEW KEY
+        'combined-footer-info': 'Wasiliana nasi: aitext2wordconverter.com ©2025 Nyalweezy. Haki zote zimehifadhiwa.',
+        'sample-header': 'Mfano wa Ingizo na Matokeo'
     },
     ar: {
         'site-title-link': 'محول النص الرياضي بالذكاء الاصطناعي إلى Word',
@@ -127,7 +126,7 @@ const translations = {
         'preview-header': 'معاينة',
         'dark-mode-label': 'الوضع الداكن',
         'convert-button': 'تحويل إلى Word (تنزيل)',
-        'step1-text': 'انسخ النص الرياضي الذي تم إنشاؤه بواسطة الذكاء الاصطناعي من مصدره. تأكد من النسخ باستخدام أيقونة النسخ في الجزء السفلي من رد الذكاء الاصطناعي.', // MODIFIED LINE
+        'step1-text': 'انسخ النص الرياضي الذي تم إنشاؤه بواسطة الذكاء الاصطناعي من مصدره. تأكد من النسخ باستخدام أيقونة النسخ في الجزء السفلي من رد الذكاء الاصطناعي.',
         'step2-text': 'الصق النص في منطقة الإدخال وقم بمعاينة الإخراج المنسق.',
         'step3-text': 'انقر فوق "تحويل إلى Word (تنزيل)" للحصول على ملف DOCX الخاص بك.',
         'paste-error': 'فشل قراءة محتويات الحافظة. يرجى التأكد من منح الإذن بالوصول إلى الحافظة أو اللصق يدويًا (Ctrl+V/Cmd+V).',
@@ -136,8 +135,8 @@ const translations = {
         'unexpected-error': 'حدث خطأ غير متوقع أثناء التحويل. يرجى المحاولة مرة أخرى.',
         'mathjax-not-ready': 'عرض الرياضيات ليس جاهزًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
         'mathjax-components-not-loaded': 'لم يتم تحميل مكونات عرض الرياضيات. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
-        'combined-footer-info': 'تواصل معنا: aitext2wordconverter.com ©2025 Nyalweezy. جميع الحقوق محفوظة.', // NEW COMBINED KEY
-        'sample-header': 'مثال على الإدخال والإخراج' // NEW KEY
+        'combined-footer-info': 'تواصل معنا: aitext2wordconverter.com ©2025 Nyalweezy. جميع الحقوق محفوظة.',
+        'sample-header': 'مثال على الإدخال والإخراج'
     }
 };
 
@@ -155,7 +154,6 @@ function updateContentLanguage(lang) {
         }
     });
 }
-
 
 function debounce(func, delay) {
     let timeout;
@@ -192,12 +190,44 @@ function convertLaTeX(input) {
     return output;
 }
 
+function convertMatrixStyle(input) {
+    // This regex now specifically captures:
+    // Group 1: The initial '$$'
+    // Group 2: The preamble (e.g., 'A_{3} = ' - including the equals sign)
+    // Group 3: The matrix body content
+    // Group 4: The final '$$' (which is removed from its original position)
+    const matrixRegex = /(\$\$)\s*([\s\S]*?)\s*\\begin\{bmatrix\}([\s\S]*?)\\end\{bmatrix\}\s*(\$\$)/g;
+
+    return input.replace(matrixRegex, (match, initialDollar, preambleContent, matrixBody, finalDollar) => {
+        // Keep the preamble content as is, including the '='
+        let cleanedPreamble = preambleContent.trim();
+
+        const rows = matrixBody.split('\\\\')
+            .map(row => row.trim())
+            .filter(row => row.length > 0);
+
+        // Format each row into its own bmatrix block, each wrapped in $$...$$
+        const formattedMatrices = rows.map(row => `$$\\begin{bmatrix}\n${row}\n\\end{bmatrix}$$`);
+
+        // Assemble the final string:
+        // Initial $$ + Preamble (as captured) + closing $$ for the preamble
+        // Followed by a newline
+        // Followed by the joined individual matrix rows (each with its own $$...$$), separated by blank lines
+        if (cleanedPreamble) {
+            return `${initialDollar}${cleanedPreamble} $$\n${formattedMatrices.join('\n\n')}`;
+        } else {
+            // If there was no preamble, just return the formatted matrices directly
+            return formattedMatrices.join('\n\n');
+        }
+    });
+}
+
 let isProgrammaticScroll = false;
-let enableScrollingSync = true; // This flag will control all scroll sync operations.
+let enableScrollingSync = true;
 
 function handleScrollSync(sourceElement, targetElement) {
     if (enableScrollingSync && !isProgrammaticScroll) {
-        isProgrammaticScroll = true; // Set to true to prevent reciprocal triggering
+        isProgrammaticScroll = true;
 
         const sourceScrollPercentage = sourceElement.scrollTop / (sourceElement.scrollHeight - sourceElement.clientHeight);
         const targetScrollHeight = targetElement.scrollHeight;
@@ -207,17 +237,14 @@ function handleScrollSync(sourceElement, targetElement) {
             targetElement.scrollTop = sourceScrollPercentage * (targetScrollHeight - targetClientHeight);
         }
 
-        // Use setTimeout to allow the current scroll event to fully propagate
-        // before re-enabling programmatic scrolls. This helps prevent flicker/jumping.
         setTimeout(() => {
             isProgrammaticScroll = false;
-        }, 50); // A small delay to ensure the scroll event propagates
+        }, 50);
     }
 }
 
-
 function processText() {
-    enableScrollingSync = false; // Disable scroll sync during processing to prevent jumps
+    enableScrollingSync = false;
 
     const initialInputScrollPercentage = inputText.scrollTop / (inputText.scrollHeight - inputText.clientHeight);
     const initialPreviewScrollPercentage = previewOutput.scrollTop / (previewOutput.scrollHeight - previewOutput.clientHeight);
@@ -230,14 +257,17 @@ function processText() {
         console.log("Converted from DeepSeek style.");
     }
 
+    // It's crucial to call convertMatrixStyle AFTER convertLaTeX
+    // to ensure deepseek's \[ \] are already $$ $$
+    processed = convertMatrixStyle(processed);
+    console.log("Converted matrix style.");
+
     const html = marked.parse(processed);
-    previewOutput.innerHTML = html; // This might change scrollHeight
+    previewOutput.innerHTML = html;
 
     if (window.MathJax) {
         MathJax.typesetPromise([previewOutput])
             .then(() => {
-                // After MathJax renders and potentially changes content height,
-                // re-adjust scroll positions based on the saved percentages.
                 if (!isNaN(initialInputScrollPercentage) && (inputText.scrollHeight - inputText.clientHeight) > 0) {
                     inputText.scrollTop = initialInputScrollPercentage * (inputText.scrollHeight - inputText.clientHeight);
                 }
@@ -245,14 +275,13 @@ function processText() {
                 if (!isNaN(initialPreviewScrollPercentage) && (previewOutput.scrollHeight - previewOutput.clientHeight) > 0) {
                     previewOutput.scrollTop = initialPreviewScrollPercentage * (previewOutput.scrollHeight - previewOutput.clientHeight);
                 }
-                enableScrollingSync = true; // Re-enable sync after all adjustments
+                enableScrollingSync = true;
             })
             .catch((err) => {
                 console.error('MathJax typesetting failed:', err);
-                enableScrollingSync = true; // Re-enable sync even on error
+                enableScrollingSync = true;
             });
     } else {
-        // If MathJax is not available, just re-enable sync
         enableScrollingSync = true;
     }
 }
@@ -265,28 +294,21 @@ previewOutput.addEventListener('scroll', () => handleScrollSync(previewOutput, i
 inputText.addEventListener('input', debouncedProcessText);
 
 pasteButton.addEventListener('click', async () => {
-    enableScrollingSync = false; // Disable sync immediately on paste click
+    enableScrollingSync = false;
     try {
         const clipboardText = await navigator.clipboard.readText();
         inputText.value = clipboardText;
-
-        // Process text immediately after pasting, which will re-enable enableScrollingSync
         await processText();
     } catch (err) {
         console.error('Failed to read clipboard contents: ', err);
         alert(translations[languageSelect.value]['paste-error']);
-    } finally {
-        // No need to re-enable here, as processText() will handle it.
-        // But if processText() doesn't run (e.g., if input is empty after paste),
-        // we might need a fallback. For now, assume processText always runs.
     }
 });
 
 function downloadDocx() {
-    // Check if the input text area is empty
     if (!inputText.value.trim()) {
         alert(translations[languageSelect.value]['empty-input-alert']);
-        return; // Stop the function if the input is empty
+        return;
     }
 
     if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
@@ -303,7 +325,6 @@ function downloadDocx() {
                     })
                     .then(response => {
                         if (!response.ok) {
-                            // User-friendly warning for conversion failure
                             return response.text().then(text => {
                                 throw new Error(translations[languageSelect.value]['conversion-failed']);
                             });
@@ -321,18 +342,14 @@ function downloadDocx() {
                     })
                     .catch(error => {
                         console.error('Error during DOCX conversion or download:', error);
-                        // User-friendly warning
                         alert(error.message || translations[languageSelect.value]['unexpected-error']);
                     });
-
             })
             .catch(err => {
                 console.error("MathJax render failed before conversion:", err);
-                // User-friendly warning for MathJax rendering
                 alert(translations[languageSelect.value]['mathjax-not-ready']);
             });
     } else {
-        // User-friendly warning for MathJax not loaded
         alert(translations[languageSelect.value]['mathjax-components-not-loaded']);
     }
 }
@@ -354,18 +371,16 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
         darkModeSwitch.checked = true;
     }
-    // Set initial language from localStorage or default to 'en'
     const savedLanguage = localStorage.getItem('language') || 'en';
     languageSelect.value = savedLanguage;
     updateContentLanguage(savedLanguage);
-    processText(); // Call processText on DOMContentLoaded to initialize preview and scroll sync
+    processText();
 });
-
 
 languageSelect.addEventListener('change', (event) => {
     const selectedLanguage = event.target.value;
     console.log(`Language changed to: ${selectedLanguage}`);
-    localStorage.setItem('language', selectedLanguage); // Save selected language
+    localStorage.setItem('language', selectedLanguage);
     updateContentLanguage(selectedLanguage);
-    processText(); // Call processText after language change to re-render preview and maintain scroll sync
+    processText();
 });
