@@ -25,7 +25,7 @@ const translations = {
         'unexpected-error': 'An unexpected error occurred during conversion. Please try again.',
         'mathjax-not-ready': 'Math rendering is not ready. Please wait a moment and try again.',
         'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.',
-        'combined-footer-info': 'Contact us: info@aitext2wordconverter.com ©2025 Nyalweezy. All rights reserved.',
+        'combined-footer-info': 'Contact us: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. All rights reserved.',
         'sample-header': 'Sample Input and Output'
     },
     es: {
@@ -47,7 +47,7 @@ const translations = {
         'unexpected-error': 'Ocurrió un error inesperado durante la conversión. Por favor, inténtelo de nuevo.',
         'mathjax-not-ready': 'La renderización de las matemáticas no está lista. Por favor, espere un momento e inténtelo de nuevo.',
         'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento y inténtelo de nuevo.',
-        'combined-footer-info': 'Contáctenos: aitext2wordconverter.com ©2025 Nyalweezy. Todos los derechos reservados.',
+        'combined-footer-info': 'Contáctenos: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Todos los derechos reservados.',
         'sample-header': 'Ejemplo de Entrada y Salida'
     },
     fr: {
@@ -60,16 +60,16 @@ const translations = {
         'preview-header': 'Aperçu',
         'dark-mode-label': 'Mode Sombre',
         'convert-button': 'Convertir en Word (Télécharger)',
-        'step1-text': 'Copiez le texte mathématique generado por l\'IA de su source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la réponse de l\'IA.',
+        'step1-text': 'Copiez le texte mathématique generado por l\'IA de su source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la respuesta de l\'IA.',
         'step2-text': 'Collez le texto en la zona de entrada y previsualice el resultado formateado.',
         'step3-text': 'Haga clic en "Convertir a Word (Descargar)" para obtener su archivo DOCX.',
-        'paste-error': 'Échec de la lecture du contenu du presse-papiers. Assurez-vous d\'avoir accordé l\'accès au presse-papiers ou collez manuellement (Ctrl+V/Cmd+V).',
-        'empty-input-alert': 'Veuillez d\'abord coller votre équation ou votre texte dans la zone de saisie.',
-        'conversion-failed': 'La conversion a échoué. Veuillez réessayer plus tard ou contacter le support si le problème persiste.',
+        'paste-error': 'Échec de la lectura del contenido del presse-papiers. Assurez-se d\'avoir accordé l\'accès au presse-papiers ou collez manuellement (Ctrl+V/Cmd+V).',
+        'empty-input-alert': 'Veuillez d\'abord coller votre équation ou votre texto en la zona de saisie.',
+        'conversion-failed': 'La conversion a échoué. Veuillez réessayer plus tard ou contacter le support si el problema persiste.',
         'unexpected-error': 'Une erreur inattendue est survenue lors de la conversion. Veuillez réessayer.',
         'mathjax-not-ready': 'Le rendu mathématique n\'est pas prêt. Veuillez patienter un instant et réessayer.',
         'mathjax-components-not-loaded': 'Les composants de rendu mathématique ne sont pas chargés. Veuillez patienter un instant et réessayer.',
-        'combined-footer-info': 'Contactez-nous : aitext2wordconverter.com ©2025 Nyalweezy. Tous droits réservés.',
+        'combined-footer-info': 'Contactez-nous : <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Tous droits réservés.',
         'sample-header': 'Exemple d\'entrée et de sortie'
     },
     de: {
@@ -91,7 +91,7 @@ const translations = {
         'unexpected-error': 'Während der Konvertierung ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es erneut.',
         'mathjax-not-ready': 'Mathematisches Rendering ist nicht bereit. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
         'mathjax-components-not-loaded': 'Mathematische Rendering-Komponenten sind nicht geladen. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
-        'combined-footer-info': 'Kontaktieren Sie uns: aitext2wordconverter.com ©2025 Nyalweezy. Alle Rechte vorbehalten.',
+        'combined-footer-info': 'Kontaktieren Sie uns: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Alle Rechte vorbehalten.',
         'sample-header': 'Beispiel für Eingabe und Ausgabe'
     },
     sw: {
@@ -113,7 +113,7 @@ const translations = {
         'unexpected-error': 'Hitilafu isiyotarajiwa imetokea wakati wa ubadilishaji. Tafadhali jaribu tena.',
         'mathjax-not-ready': 'Utoaji wa hisabati hauko tayari. Tafadhali subiri kidogo na ujaribu tena.',
         'mathjax-components-not-loaded': 'Vijenzi vya utoaji wa hisabati havijapakiwa. Tafadhali subiri kidogo na ujaribu tena.',
-        'combined-footer-info': 'Wasiliana nasi: aitext2wordconverter.com ©2025 Nyalweezy. Haki zote zimehifaserved.',
+        'combined-footer-info': 'Wasiliana nasi: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Haki zote zimehifaserved.',
         'sample-header': 'Mfano wa Ingizo na Matokeo'
     },
     ar: {
@@ -135,7 +135,7 @@ const translations = {
         'unexpected-error': 'حدث خطأ غير متوقع أثناء التحويل. يرجى المحاولة مرة أخرى.',
         'mathjax-not-ready': 'عرض الرياضيات ليس جاهزًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
         'mathjax-components-not-loaded': 'لم يتم تحميل مكونات عرض الرياضيات. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
-        'combined-footer-info': 'تواصل معنا: aitext2wordconverter.com ©2025 Nyalweezy. جميع الحقوق محفوظة.',
+        'combined-footer-info': 'تواصل معنا: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. جميع الحقوق محفوظة.',
         'sample-header': 'مثال على الإدخال والإخراج'
     },
     am: {
@@ -157,8 +157,74 @@ const translations = {
         'unexpected-error': 'በመቀየር ወቅት ያልተጠበቀ ስህተት ተከስቷል። እባክዎ እንደገና ይሞክሩ።',
         'mathjax-not-ready': 'የሂሳብ ማሳያው ገና ዝግጁ አይደለም። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።',
         'mathjax-components-not-loaded': 'የሂሳብ ማሳያ ክፍሎች አልተጫኑም። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።',
-        'combined-footer-info': 'ያግኙን: aitext2wordconverter.com ©2025 Nyalweezy. ሁሉም መብቶች የተጠበቁ ናቸው።',
+        'combined-footer-info': 'ያግኙን: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. ሁሉም መብቶች የተጠበቁ ናቸው።',
         'sample-header': 'የግቤት እና የውጤት ምሳሌ'
+    },
+    zh: {
+        'site-title-link': 'AI文本转Word转换器',
+        'fun-sentence': '告别公式烦恼！现在，只需轻轻一点，即可轻松将复杂的AI生成数学转换为格式完美的Word文档！',
+        'language-label': '语言:',
+        'paste-text-header': '粘贴AI文本',
+        'paste-button': '粘贴',
+        'input-placeholder': '在此粘贴您的数学文本...',
+        'preview-header': '预览',
+        'dark-mode-label': '深色模式',
+        'convert-button': '转换为Word (下载)',
+        'step1-text': '从AI源复制AI生成的数学文本。请确保使用AI回复底部的复制图标进行复制。',
+        'step2-text': '将文本粘贴到输入区域并预览格式化输出。',
+        'step3-text': '点击“转换为Word (下载)”以获取您的DOCX文件。',
+        'paste-error': '从剪贴板粘贴失败。请确保您已授予剪贴板访问权限或手动粘贴 (Ctrl+V/Cmd+V)。',
+        'empty-input-alert': '请先将您的公式或文本粘贴到输入区域。',
+        'conversion-failed': '转换失败。请稍后重试或如果问题仍然存在，请联系支持。',
+        'unexpected-error': '转换过程中发生意外错误。请重试。',
+        'mathjax-not-ready': '数学渲染尚未准备好。请稍等片刻再试。',
+        'mathjax-components-not-loaded': '数学渲染组件未加载。请稍等片刻再试。',
+        'combined-footer-info': '联系我们: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. 保留所有权利。',
+        'sample-header': '输入和输出示例'
+    },
+    ru: {
+        'site-title-link': 'Конвертер текста AI в Word',
+        'fun-sentence': 'Попрощайтесь с проблемами уравнений! Теперь легко преобразуйте сложную математику, сгенерированную ИИ, в идеально отформатированные документы Word одним щелчком мыши!',
+        'language-label': 'Язык:',
+        'paste-text-header': 'Вставить текст из ИИ',
+        'paste-button': 'Вставить',
+        'input-placeholder': 'Вставьте ваш математический текст сюда...',
+        'preview-header': 'Предварительный просмотр',
+        'dark-mode-label': 'Темный режим',
+        'convert-button': 'Конвертировать в Word (Скачать)',
+        'step1-text': 'Скопируйте сгенерированный ИИ математический текст из его источника. Убедитесь, что вы копируете, используя значок копирования внизу ответа ИИ.',
+        'step2-text': 'Вставьте текст в область ввода и просмотрите отформатированный вывод.',
+        'step3-text': 'Нажмите «Конвертировать в Word (Скачать)», чтобы получить файл DOCX.',
+        'paste-error': 'Не удалось вставить из буфера обмена. Убедитесь, что вы предоставили доступ к буферу обмена, или вставьте вручную (Ctrl+V/Cmd+V).',
+        'empty-input-alert': 'Пожалуйста, сначала вставьте ваше уравнение или текст в область ввода.',
+        'conversion-failed': 'Преобразование не удалось. Пожалуйста, попробуйте еще раз позже или обратитесь в службу поддержки, если проблема не исчезнет.',
+        'unexpected-error': 'Во время преобразования произошла непредвиденная ошибка. Пожалуйста, попробуйте еще раз.',
+        'mathjax-not-ready': 'Рендеринг математики не готов. Пожалуйста, подождите немного и повторите попытку.',
+        'mathjax-components-not-loaded': 'Компоненты рендеринга математики не загружены. Пожалуйста, подождите немного и повторите попытку.',
+        'combined-footer-info': 'Свяжитесь с нами: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Все права защищены.',
+        'sample-header': 'Пример ввода и вывода'
+    },
+    pt: {
+        'site-title-link': 'Conversor de Texto AI para Word',
+        'fun-sentence': 'Diga adeus à frustração com equações! Agora, transforme sem esforço a matemática complexa gerada por IA em documentos Word perfeitamente formatados com um único clique!',
+        'language-label': 'Idioma:',
+        'paste-text-header': 'Colar Texto da IA',
+        'paste-button': 'Colar',
+        'input-placeholder': 'Cole seu texto matemático aqui...',
+        'preview-header': 'Pré-visualização',
+        'dark-mode-label': 'Modo Escuro',
+        'convert-button': 'Converter para Word (Download)',
+        'step1-text': 'Copie o texto matemático gerado pela IA de sua origem. Certifique-se de copiar usando o ícone de copiar na parte inferior da resposta da IA.',
+        'step2-text': 'Cole o texto na área de entrada e visualize a saída formatada.',
+        'step3-text': 'Clique em "Converter para Word (Download)" para obter seu arquivo DOCX.',
+        'paste-error': 'Falha ao colar do clipboard. Certifique-se de ter concedido acesso ao clipboard ou cole manualmente (Ctrl+V/Cmd+V).',
+        'empty-input-alert': 'Por favor, cole sua equação ou texto na área de entrada primeiro.',
+        'conversion-failed': 'A conversão falhou. Por favor, tente novamente mais tarde ou entre em contato com o suporte se o problema persistir.',
+        'unexpected-error': 'Ocorreu um erro inesperado durante a conversão. Por favor, tente novamente.',
+        'mathjax-not-ready': 'A renderização matemática não está pronta. Por favor, aguarde um momento e tente novamente.',
+        'mathjax-components-not-loaded': 'Os componentes de renderização matemática não estão carregados. Por favor, aguarde um momento e tente novamente.',
+        'combined-footer-info': 'Contate-nos: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Todos os direitos reservados.',
+        'sample-header': 'Exemplo de Entrada e Saída'
     }
 };
 
@@ -171,7 +237,7 @@ function updateContentLanguage(lang) {
             } else if (element.tagName === 'BUTTON') {
                 element.textContent = translations[lang][key];
             } else {
-                element.textContent = translations[lang][key];
+                element.innerHTML = translations[lang][key]; // Use innerHTML for text that contains HTML tags
             }
         }
     });
