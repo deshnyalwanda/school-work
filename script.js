@@ -8,6 +8,8 @@ const languageSelect = document.getElementById('language-select');
 const translations = {
     en: {
         'site-title-link': 'AI Text 2 Word Converter',
+        'about-us-link': 'About Us',
+        'contact-us-link': 'Contact Us',
         'fun-sentence': 'Say goodbye to equation frustration! Now, effortlessly transform complex AI-generated math into perfectly formatted Word documents with a single click!',
         'language-label': 'Language:',
         'paste-text-header': 'Paste Text from AI',
@@ -26,10 +28,16 @@ const translations = {
         'mathjax-not-ready': 'Math rendering is not ready. Please wait a moment and try again.',
         'mathjax-components-not-loaded': 'Math rendering components are not loaded. Please wait a moment and try again.',
         'combined-footer-info': 'Contact us: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. All rights reserved.',
-        'sample-header': 'Sample Input and Output'
+        'sample-header': 'Sample Input and Output',
+        'about-us-header': 'About Us',
+        'about-us-text': 'We are a small group of students based in Nairobi, Kenya, passionate about making the use of AI as seamless as possible. We identified a common challenge: converting AI-generated mathematical text, often in LaTeX or similar formats, into easily editable Word documents. This is our first application, and we hope to continue building tools that simplify complex tasks for students and professionals alike. We are committed to providing a reliable and user-friendly service.',
+        'contact-us-header': 'Contact Us',
+        'contact-us-text': 'If you have any questions, feedback, or encounter any issues, please do not hesitate to reach out to us. We value your input and are always looking for ways to improve our service. You can contact us via email at <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. We aim to respond to all inquiries within 24-48 hours.'
     },
     es: {
         'site-title-link': 'Convertidor de Texto AI a Word',
+        'about-us-link': 'Sobre Nosotros',
+        'contact-us-link': 'Contáctenos',
         'fun-sentence': '¡Diga adiós a la frustración con las ecuaciones! ¡Ahora, transforme sin esfuerzo las matemáticas complejas generadas por IA en documentos de Word perfectamente formateados con un solo clic!',
         'language-label': 'Idioma:',
         'paste-text-header': 'Pegar Texto de IA',
@@ -48,32 +56,44 @@ const translations = {
         'mathjax-not-ready': 'La renderización de las matemáticas no está lista. Por favor, espere un momento e inténtelo de nuevo.',
         'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento y inténtelo de nuevo.',
         'combined-footer-info': 'Contáctenos: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Todos los derechos reservados.',
-        'sample-header': 'Ejemplo de Entrada y Salida'
+        'sample-header': 'Ejemplo de Entrada y Salida',
+        'about-us-header': 'Sobre Nosotros',
+        'about-us-text': 'Somos un pequeño grupo de estudiantes con sede en Nairobi, Kenia, apasionados por hacer que el uso de la IA sea lo más fluido posible. Identificamos un desafío común: convertir texto matemático generado por IA, a menudo en formatos LaTeX o similares, en documentos de Word fácilmente editables. Esta es nuestra primera aplicación, y esperamos seguir construyendo herramientas que simplifiquen tareas complejas para estudiantes y profesionales por igual. Estamos comprometidos a proporcionar un servicio fiable y fácil de usar.',
+        'contact-us-header': 'Contáctenos',
+        'contact-us-text': 'Si tiene alguna pregunta, comentario o encuentra algún problema, no dude en ponerse en contacto con nosotros. Valoramos su opinión y siempre estamos buscando formas de mejorar nuestro servicio. Puede contactarnos por correo electrónico a <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nuestro objetivo es responder a todas las consultas en un plazo de 24 a 48 horas.'
     },
     fr: {
         'site-title-link': 'Convertisseur de Texte IA en Word',
+        'about-us-link': 'À Propos de Nous',
+        'contact-us-link': 'Contactez-nous',
         'fun-sentence': 'Dites adieu à la frustration des équations ! Transformez désormais sans effort les mathématiques complexes générées par l\'IA en documents Word parfaitement formatés en un seul clic !',
         'language-label': 'Langue :',
         'paste-text-header': 'Coller le texte de l\'IA',
         'paste-button': 'Coller',
-        'input-placeholder': 'Collez votre texte mathématique aquí...',
+        'input-placeholder': 'Collez votre texte mathématique ici...',
         'preview-header': 'Aperçu',
         'dark-mode-label': 'Mode Sombre',
         'convert-button': 'Convertir en Word (Télécharger)',
-        'step1-text': 'Copiez le texte mathématique generado por l\'IA de su source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la respuesta de l\'IA.',
-        'step2-text': 'Collez le texto en la zona de entrada y previsualice el resultado formateado.',
-        'step3-text': 'Haga clic en "Convertir a Word (Descargar)" para obtener su archivo DOCX.',
-        'paste-error': 'Échec de la lectura del contenido del presse-papiers. Assurez-se d\'avoir accordé l\'accès au presse-papiers ou collez manuellement (Ctrl+V/Cmd+V).',
-        'empty-input-alert': 'Veuillez d\'abord coller votre équation ou votre texto en la zona de saisie.',
-        'conversion-failed': 'La conversion a échoué. Veuillez réessayer plus tard ou contacter le support si el problema persiste.',
+        'step1-text': 'Copiez le texte mathématique généré par l\'IA de sa source. Assurez-vous de copier en utilisant l\'icône de copie au bas de la réponse de l\'IA.',
+        'step2-text': 'Collez le texte dans la zone de saisie et prévisualisez le résultat formaté.',
+        'step3-text': 'Cliquez sur "Convertir en Word (Télécharger)" pour obtenir votre fichier DOCX.',
+        'paste-error': 'Échec de la lecture du contenu du presse-papiers. Assurez-vous d\'avoir accordé l\'accès au presse-papiers ou collez manuellement (Ctrl+V/Cmd+V).',
+        'empty-input-alert': 'Veuillez d\'abord coller votre équation ou votre texte dans la zone de saisie.',
+        'conversion-failed': 'La conversion a échoué. Veuillez réessayer plus tard ou contacter le support si le problème persiste.',
         'unexpected-error': 'Une erreur inattendue est survenue lors de la conversion. Veuillez réessayer.',
         'mathjax-not-ready': 'Le rendu mathématique n\'est pas prêt. Veuillez patienter un instant et réessayer.',
         'mathjax-components-not-loaded': 'Les composants de rendu mathématique ne sont pas chargés. Veuillez patienter un instant et réessayer.',
         'combined-footer-info': 'Contactez-nous : <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Tous droits réservés.',
-        'sample-header': 'Exemple d\'entrée et de sortie'
+        'sample-header': 'Exemple d\'entrée et de sortie',
+        'about-us-header': 'À Propos de Nous',
+        'about-us-text': 'Nous sommes un petit groupe d\'étudiants basés à Nairobi, au Kenya, passionnés par l\'idée de rendre l\'utilisation de l\'IA aussi fluide que possible. Nous avons identifié un défi courant : convertir le texte mathématique généré par l\'IA, souvent au format LaTeX ou similaire, en documents Word facilement modifiables. Ceci est notre première application, et nous espérons continuer à créer des outils qui simplifient les tâches complexes pour les étudiants et les professionnels. Nous nous engageons à fournir un service fiable et convivial.',
+        'contact-us-header': 'Contactez-nous',
+        'contact-us-text': 'Si vous avez des questions, des commentaires ou rencontrez des problèmes, n\'hésitez pas à nous contacter. Nous apprécions votre avis et cherchons toujours des moyens d\'améliorer notre service. Vous pouvez nous contacter par e-mail à <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nous nous efforçons de répondre à toutes les demandes dans les 24 à 48 heures.'
     },
     de: {
         'site-title-link': 'KI Text zu Word Konverter',
+        'about-us-link': 'Über Uns',
+        'contact-us-link': 'Kontakt',
         'fun-sentence': 'Verabschieden Sie sich von der Gleichungsfrustration! Verwandeln Sie jetzt mühelos komplexe KI-generierte Mathematik mit einem einzigen Klick in perfekt formatierte Word-Dokumente!',
         'language-label': 'Sprache:',
         'paste-text-header': 'Text von KI einfügen',
@@ -92,10 +112,16 @@ const translations = {
         'mathjax-not-ready': 'Mathematisches Rendering ist nicht bereit. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
         'mathjax-components-not-loaded': 'Mathematische Rendering-Komponenten sind nicht geladen. Bitte warten Sie einen Moment und versuchen Sie es erneut.',
         'combined-footer-info': 'Kontaktieren Sie uns: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Alle Rechte vorbehalten.',
-        'sample-header': 'Beispiel für Eingabe und Ausgabe'
+        'sample-header': 'Beispiel für Eingabe und Ausgabe',
+        'about-us-header': 'Über Uns',
+        'about-us-text': 'Wir sind eine kleine Gruppe von Studenten aus Nairobi, Kenia, die sich leidenschaftlich dafür einsetzen, die Nutzung von KI so nahtlos wie möglich zu gestalten. Wir haben eine gemeinsame Herausforderung identifiziert: die Umwandlung von KI-generiertem mathematischem Text, oft in LaTeX- oder ähnlichen Formaten, in leicht bearbeitbare Word-Dokumente. Dies ist unsere erste Anwendung, und wir hoffen, weiterhin Tools zu entwickeln, die komplexe Aufgaben für Studenten und Fachleute gleichermaßen vereinfachen. Wir sind bestrebt, einen zuverlässigen und benutzerfreundlichen Service anzubieten.',
+        'contact-us-header': 'Kontakt',
+        'contact-us-text': 'Wenn Sie Fragen, Feedback oder Probleme haben, zögern Sie bitte nicht, uns zu kontaktieren. Wir schätzen Ihre Meinung und sind stets bemüht, unseren Service zu verbessern. Sie können uns per E-Mail unter <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a> erreichen. Wir bemühen uns, alle Anfragen innerhalb von 24-48 Stunden zu beantworten.'
     },
     sw: {
         'site-title-link': 'Kigeuzi cha Maandishi ya AI kwenda Word',
+        'about-us-link': 'Kuhusu Sisi',
+        'contact-us-link': 'Wasiliana Nasi',
         'fun-sentence': 'Sema kwaheri kwa kuchanganyikiwa kwa milinganyo! Sasa, badilisha kwa urahisi hisabati changamano iliyozalishwa na AI kuwa hati za Word zilizopangiliwa kikamilifu kwa mbofyo mmoja!',
         'language-label': 'Lugha:',
         'paste-text-header': 'Bandika Maandishi kutoka AI',
@@ -113,11 +139,17 @@ const translations = {
         'unexpected-error': 'Hitilafu isiyotarajiwa imetokea wakati wa ubadilishaji. Tafadhali jaribu tena.',
         'mathjax-not-ready': 'Utoaji wa hisabati hauko tayari. Tafadhali subiri kidogo na ujaribu tena.',
         'mathjax-components-not-loaded': 'Vijenzi vya utoaji wa hisabati havijapakiwa. Tafadhali subiri kidogo na ujaribu tena.',
-        'combined-footer-info': 'Wasiliana nasi: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Haki zote zimehifaserved.',
-        'sample-header': 'Mfano wa Ingizo na Matokeo'
+        'combined-footer-info': 'Wasiliana nasi: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Haki zote zimehifadhiwa.',
+        'sample-header': 'Mfano wa Ingizo na Matokeo',
+        'about-us-header': 'Kuhusu Sisi',
+        'about-us-text': 'Sisi ni kikundi kidogo cha wanafunzi wenye makao yao Nairobi, Kenya, wenye shauku ya kufanya matumizi ya AI kuwa rahisi iwezekanavyo. Tulibaini changamoto ya kawaida: kubadilisha maandishi ya hisabati yanayozalishwa na AI, mara nyingi katika fomati za LaTeX au zinazofanana, kuwa hati za Word zinazoweza kuhaririwa kwa urahisi. Hii ni programu yetu ya kwanza, na tunatumai kuendelea kujenga zana zinazoragisha kazi ngumu kwa wanafunzi na wataalamu sawa. Tumejitolea kutoa huduma ya kuaminika na rahisi kutumia.',
+        'contact-us-header': 'Wasiliana Nasi',
+        'contact-us-text': 'Ikiwa una maswali yoyote, maoni, au unakutana na masuala yoyote, tafadhali usisite kuwasiliana nasi. Tunathamini maoni yako na daima tunatafuta njia za kuboresha huduma yetu. Unaweza kuwasiliana nasi kupitia barua pepe kwa <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Tunalenga kujibu maswali yote ndani ya saa 24-48.'
     },
     ar: {
         'site-title-link': 'محول النص الرياضي بالذكاء الاصطناعي إلى Word',
+        'about-us-link': 'عنا',
+        'contact-us-link': 'اتصل بنا',
         'fun-sentence': 'قل وداعًا لإحباط المعادلات! الآن، حوّل بسهولة المعادلات الرياضية المعقدة التي تم إنشاؤها بواسطة الذكاء الاصطناعي إلى مستندات Word منسقة بشكل مثالي بنقرة واحدة!',
         'language-label': 'اللغة:',
         'paste-text-header': 'لصق النص من الذكاء الاصطناعي',
@@ -136,10 +168,16 @@ const translations = {
         'mathjax-not-ready': 'عرض الرياضيات ليس جاهزًا. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
         'mathjax-components-not-loaded': 'لم يتم تحميل مكونات عرض الرياضيات. يرجى الانتظار لحظة والمحاولة مرة أخرى.',
         'combined-footer-info': 'تواصل معنا: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. جميع الحقوق محفوظة.',
-        'sample-header': 'مثال على الإدخال والإخراج'
+        'sample-header': 'مثال على الإدخال والإخراج',
+        'about-us-header': 'عنا',
+        'about-us-text': 'نحن مجموعة صغيرة من الطلاب مقرها في نيروبي، كينيا، متحمسون لجعل استخدام الذكاء الاصطناعي سلسًا قدر الإمكان. لقد حددنا تحديًا شائعًا: تحويل النص الرياضي الذي تم إنشاؤه بواسطة الذكاء الاصطناعي، غالبًا بتنسيقات LaTeX أو ما شابهها، إلى مستندات Word سهلة التعديل. هذا هو تطبيقنا الأول، ونأمل أن نستمر في بناء أدوات تبسط المهام المعقدة للطلاب والمهنيين على حد سواء. نحن ملتزمون بتقديم خدمة موثوقة وسهلة الاستخدام.',
+        'contact-us-header': 'اتصل بنا',
+        'contact-us-text': 'إذا كان لديك أي أسئلة أو ملاحظات أو واجهت أي مشاكل، فلا تتردد في التواصل معنا. نحن نقدر مدخلاتك ونسعى دائمًا لتحسين خدمتنا. يمكنك الاتصال بنا عبر البريد الإلكتروني على <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. نهدف إلى الرد على جميع الاستفسارات في غضون 24-48 ساعة.'
     },
     am: {
         'site-title-link': 'የአይአይ ጽሑፍ ወደ ዎርድ መቀየሪያ',
+        'about-us-link': 'ስለ እኛ',
+        'contact-us-link': 'ያግኙን',
         'fun-sentence': 'የእኩልታ ብስጭትን ይሰናበቱ! አሁን፣ በAI የመነጩ ውስብስብ የሂሳብ ቀመሮችን በአንድ ጠቅታ ወደ ፍፁም የተቀረጹ የዎርድ ሰነዶች ያለልፋት ይቀይሩ!',
         'language-label': 'ቋንቋ:',
         'paste-text-header': 'ጽሑፍ ከአይአይ ለጥፍ',
@@ -158,10 +196,16 @@ const translations = {
         'mathjax-not-ready': 'የሂሳብ ማሳያው ገና ዝግጁ አይደለም። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።',
         'mathjax-components-not-loaded': 'የሂሳብ ማሳያ ክፍሎች አልተጫኑም። እባክዎ ትንሽ ይጠብቁ እና እንደገና ይሞክሩ።',
         'combined-footer-info': 'ያግኙን: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. ሁሉም መብቶች የተጠበቁ ናቸው።',
-        'sample-header': 'የግቤት እና የውጤት ምሳሌ'
+        'sample-header': 'የግቤት እና የውጤት ምሳሌ',
+        'about-us-header': 'ስለ እኛ',
+        'about-us-text': 'እኛ በናይሮቢ፣ ኬንያ የምንገኝ አነስተኛ የተማሪዎች ቡድን ነን፣ የAI አጠቃቀምን በተቻለ መጠን እንከን የለሽ ለማድረግ ከፍተኛ ፍላጎት አለን። የAI የመነጩ የሂሳብ ጽሑፎችን፣ ብዙውን ጊዜ በLaTeX ወይም ተመሳሳይ ቅርጸቶች፣ በቀላሉ ሊስተካከሉ ወደሚችሉ የዎርድ ሰነዶች የመቀየር የተለመደ ችግር ለይተናል። ይህ የመጀመሪያው መተግበሪያችን ነው፣ እና ለተማሪዎች እና ለባለሙያዎች ውስብስብ ተግባራትን የሚያቃልሉ መሳሪያዎችን መገንባታችንን ለመቀጠል ተስፋ እናደርጋለን። አስተማማኝ እና ለተጠቃሚ ምቹ አገልግሎት ለመስጠት ቆርጠናል::',
+        'contact-us-header': 'ያግኙን',
+        'contact-us-text': 'ማንኛውም ጥያቄዎች፣ አስተያየቶች ወይም ችግሮች ካሉዎት እባክዎ እኛን ለማግኘት አያመንቱ። የእርስዎን ግብዓት ከፍ አድርገን እንመለከታለን እና አገልግሎታችንን ለማሻሻል ሁልጊዜ መንገዶችን እንፈልጋለን። በኢሜል ሊያገኙን ይችላሉ <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. ሁሉንም ጥያቄዎች በ24-48 ሰዓታት ውስጥ ለመመለስ ዓላማችን ነው።'
     },
     zh: {
         'site-title-link': 'AI文本转Word转换器',
+        'about-us-link': '关于我们',
+        'contact-us-link': '联系我们',
         'fun-sentence': '告别公式烦恼！现在，只需轻轻一点，即可轻松将复杂的AI生成数学转换为格式完美的Word文档！',
         'language-label': '语言:',
         'paste-text-header': '粘贴AI文本',
@@ -180,10 +224,16 @@ const translations = {
         'mathjax-not-ready': '数学渲染尚未准备好。请稍等片刻再试。',
         'mathjax-components-not-loaded': '数学渲染组件未加载。请稍等片刻再试。',
         'combined-footer-info': '联系我们: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. 保留所有权利。',
-        'sample-header': '输入和输出示例'
+        'sample-header': '输入和输出示例',
+        'about-us-header': '关于我们',
+        'about-us-text': '我们是一群位于肯尼亚内罗毕的学生，热衷于让AI的使用尽可能无缝。我们发现了一个常见挑战：将AI生成的数学文本（通常是LaTeX或类似格式）转换为易于编辑的Word文档。这是我们的第一个应用程序，我们希望继续构建工具，为学生和专业人士简化复杂任务。我们致力于提供可靠且用户友好的服务。',
+        'contact-us-header': '联系我们',
+        'contact-us-text': '如果您有任何问题、反馈或遇到任何问题，请随时与我们联系。我们重视您的意见，并一直在寻找改进我们服务的方法。您可以通过电子邮件联系我们：<a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>。我们的目标是在24-48小时内回复所有查询。'
     },
     ru: {
         'site-title-link': 'Конвертер текста AI в Word',
+        'about-us-link': 'О нас',
+        'contact-us-link': 'Контакты',
         'fun-sentence': 'Попрощайтесь с проблемами уравнений! Теперь легко преобразуйте сложную математику, сгенерированную ИИ, в идеально отформатированные документы Word одним щелчком мыши!',
         'language-label': 'Язык:',
         'paste-text-header': 'Вставить текст из ИИ',
@@ -202,10 +252,16 @@ const translations = {
         'mathjax-not-ready': 'Рендеринг математики не готов. Пожалуйста, подождите немного и повторите попытку.',
         'mathjax-components-not-loaded': 'Компоненты рендеринга математики не загружены. Пожалуйста, подождите немного и повторите попытку.',
         'combined-footer-info': 'Свяжитесь с нами: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Все права защищены.',
-        'sample-header': 'Пример ввода и вывода'
+        'sample-header': 'Пример ввода и вывода',
+        'about-us-header': 'О нас',
+        'about-us-text': 'Мы — небольшая группа студентов из Найроби, Кения, увлеченных тем, чтобы сделать использование ИИ максимально простым. Мы выявили общую проблему: преобразование сгенерированного ИИ математического текста, часто в форматах LaTeX или аналогичных, в легко редактируемые документы Word. Это наше первое приложение, и мы надеемся продолжать создавать инструменты, которые упрощают сложные задачи как для студентов, так и для профессионалов. Мы стремимся предоставлять надежный и удобный сервис.',
+        'contact-us-header': 'Контакты',
+        'contact-us-text': 'Если у вас есть какие-либо вопросы, отзывы или вы столкнулись с какими-либо проблемами, пожалуйста, не стесняйтесь обращаться к нам. Мы ценим ваш вклад и всегда ищем способы улучшить наш сервис. Вы можете связаться с нами по электронной почте: <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Мы стремимся отвечать на все запросы в течение 24-48 часов.'
     },
     pt: {
         'site-title-link': 'Conversor de Texto AI para Word',
+        'about-us-link': 'Sobre Nós',
+        'contact-us-link': 'Contato',
         'fun-sentence': 'Diga adeus à frustração com equações! Agora, transforme sem esforço a matemática complexa gerada por IA em documentos Word perfeitamente formatados com um único clique!',
         'language-label': 'Idioma:',
         'paste-text-header': 'Colar Texto da IA',
@@ -224,7 +280,11 @@ const translations = {
         'mathjax-not-ready': 'A renderização matemática não está pronta. Por favor, aguarde um momento e tente novamente.',
         'mathjax-components-not-loaded': 'Os componentes de renderização matemática não estão carregados. Por favor, aguarde um momento e tente novamente.',
         'combined-footer-info': 'Contate-nos: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Todos os direitos reservados.',
-        'sample-header': 'Exemplo de Entrada e Saída'
+        'sample-header': 'Exemplo de Entrada e Saída',
+        'about-us-header': 'Sobre Nós',
+        'about-us-text': 'Somos um pequeno grupo de estudantes baseados em Nairobi, Quênia, apaixonados por tornar o uso da IA o mais transparente possível. Identificamos um desafio comum: converter texto matemático gerado por IA, muitas vezes em formatos LaTeX ou similares, em documentos Word facilmente editáveis. Este é o nosso primeiro aplicativo, e esperamos continuar a construir ferramentas que simplifiquem tarefas complexas para estudantes e profissionais. Estamos comprometidos em fornecer um serviço confiável e fácil de usar.',
+        'contact-us-header': 'Contato',
+        'contact-us-text': 'Se você tiver alguma dúvida, feedback ou encontrar algum problema, não hesite em nos contatar. Valorizamos sua opinião e estamos sempre procurando maneiras de melhorar nosso serviço. Você pode nos contatar por e-mail em <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nosso objetivo é responder a todas as perguntas dentro de 24-48 horas.'
     }
 };
 
@@ -291,7 +351,7 @@ function convertMatrixStyle(input) {
         const formattedMatrices = rows.map(row => `$$\\begin{bmatrix}\n${row}\n\\end{bmatrix}$$`);
 
         if (cleanedPreamble) {
-            return `${initialDollar}${cleanedPreamble} $$\n${formattedMatrices.join('\n\n')}`;
+            return `${initialDollar}${cleanedPramble} $$\n${formattedMatrices.join('\n\n')}`;
         } else {
             return formattedMatrices.join('\n\n');
         }
@@ -371,13 +431,18 @@ pasteButton.addEventListener('click', async () => {
         inputText.value = clipboardText;
         await processText();
     } catch (err) {
-        alert(translations[languageSelect.value]['paste-error']);
+        // Use a custom message box or a more subtle UI notification instead of alert()
+        console.error(translations[languageSelect.value]['paste-error'], err);
+        // Example of a simple message box (you'd need to implement this UI)
+        // showMessageBox(translations[languageSelect.value]['paste-error']);
     }
 });
 
 function downloadDocx() {
     if (!inputText.value.trim()) {
-        alert(translations[languageSelect.value]['empty-input-alert']);
+        // Use a custom message box or a more subtle UI notification instead of alert()
+        // showMessageBox(translations[languageSelect.value]['empty-input-alert']);
+        console.warn(translations[languageSelect.value]['empty-input-alert']);
         return;
     }
 
@@ -411,14 +476,20 @@ function downloadDocx() {
                         URL.revokeObjectURL(link.href);
                     })
                     .catch(error => {
-                        alert(error.message || translations[languageSelect.value]['unexpected-error']);
+                        // Use a custom message box or a more subtle UI notification instead of alert()
+                        // showMessageBox(error.message || translations[languageSelect.value]['unexpected-error']);
+                        console.error(error.message || translations[languageSelect.value]['unexpected-error']);
                     });
             })
             .catch(err => {
-                alert(translations[languageSelect.value]['mathjax-not-ready']);
+                // Use a custom message box or a more subtle UI notification instead of alert()
+                // showMessageBox(translations[languageSelect.value]['mathjax-not-ready']);
+                console.error(translations[languageSelect.value]['mathjax-not-ready'], err);
             });
     } else {
-        alert(translations[languageSelect.value]['mathjax-components-not-loaded']);
+        // Use a custom message box or a more subtle UI notification instead of alert()
+        // showMessageBox(translations[languageSelect.value]['mathjax-components-not-loaded']);
+        console.error(translations[languageSelect.value]['mathjax-components-not-loaded']);
     }
 }
 
