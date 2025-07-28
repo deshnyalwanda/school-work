@@ -326,6 +326,41 @@ textarea {
     border-color: #555;
 }
 
+/* Table formatting for #preview-output */
+#preview-output table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.9em;
+    table-layout: fixed; /* Ensures columns are fixed width */
+}
+
+#preview-output th,
+#preview-output td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    word-wrap: break-word; /* Ensures long words break and wrap */
+}
+
+#preview-output th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+}
+
+.dark-mode #preview-output th {
+    background-color: #444;
+    color: #ddd;
+}
+
+.dark-mode #preview-output table,
+.dark-mode #preview-output th,
+.dark-mode #preview-output td {
+    border-color: #555;
+}
+
+
 .input-header, .header {
     display: flex;
     justify-content: space-between;
@@ -549,4 +584,79 @@ body.dark-mode input:checked + .slider {
     body.dark-mode .right-panel {
         border-right-color: transparent;
         border-bottom-color: #444;
-  
+    }
+
+    .left-panel {
+        border-bottom: none;
+    }
+
+    .right-panel {
+        border-top: none;
+    }
+
+    textarea,
+    #preview-output {
+        height: 250px;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .steps-container {
+        flex-direction: column; /* Stack steps vertically on smaller screens */
+        padding: 15px;
+    }
+
+    .step-item {
+        flex-direction: row; /* Keep number and text side-by-side */
+        align-items: flex-start;
+        width: 100%;
+    }
+
+    .sample-section {
+        margin: 20px auto;
+        padding: 0 2vw;
+    }
+    .sample-section h2 {
+        font-size: 1.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    .panel {
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 8px 12px;
+    }
+    .main-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .header-content-left {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    .site-title {
+        font-size: 1.8em;
+    }
+    .fun-sentence {
+        font-size: 1em;
+        margin: 15px auto 0px auto;
+    }
+    .steps-container {
+        padding: 10px; /* Adjust padding for very small screens */
+        margin: 15px auto;
+        max-width: 100%;
+    }
+    .sample-section {
+        margin: 15px auto;
+        padding: 0 1vw;
+    }
+    .sample-section h2 {
+        font-size: 1.3em;
+    }
+}

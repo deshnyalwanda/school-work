@@ -228,7 +228,7 @@ const translations = {
         'about-us-header': '关于我们',
         'about-us-text': '我们是一群位于肯尼亚内罗毕的学生，热衷于让AI的使用尽可能无缝。我们发现了一个常见挑战：将AI生成的数学文本（通常是LaTeX或类似格式）转换为易于编辑的Word文档。这是我们的第一个应用程序，我们希望继续构建工具，为学生和专业人士简化复杂任务。我们致力于提供可靠且用户友好的服务。',
         'contact-us-header': '联系我们',
-        'contact-us-text': '如果您有任何问题、反馈或遇到任何问题，请随时与我们联系。我们重视您的意见，并一直在寻找改进我们服务的方法。您可以通过电子邮件联系我们：<a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>。我们的目标是在24-48小时内回复所有查询。'
+        'contact-us-text': '如果您有任何问题、反馈或遇到任何问题，请随时与我们联系。我们重视您的意见，并一直在寻找改进我们服务的方法。您可以通过电子邮件联系我们：<a href="mailto:info@aitext2wordconverter.2com" class="contact-email-link">info@aitext2wordconverter.com</a>。我们的目标是在24-48小时内回复所有查询。'
     },
     ru: {
         'site-title-link': 'Конвертер текста AI в Word',
@@ -351,7 +351,7 @@ function convertMatrixStyle(input) {
         const formattedMatrices = rows.map(row => `$$\\begin{bmatrix}\n${row}\n\\end{bmatrix}$$`);
 
         if (cleanedPreamble) {
-            return `${initialDollar}${cleanedPramble} $$\n${formattedMatrices.join('\n\n')}`;
+            return `${initialDollar}${cleanedPreamble} $$\n${formattedMatrices.join('\n\n')}`;
         } else {
             return formattedMatrices.join('\n\n');
         }
@@ -431,18 +431,13 @@ pasteButton.addEventListener('click', async () => {
         inputText.value = clipboardText;
         await processText();
     } catch (err) {
-        // Use a custom message box or a more subtle UI notification instead of alert()
-        console.error(translations[languageSelect.value]['paste-error'], err);
-        // Example of a simple message box (you'd need to implement this UI)
-        // showMessageBox(translations[languageSelect.value]['paste-error']);
+        alert(translations[languageSelect.value]['paste-error']);
     }
 });
 
 function downloadDocx() {
     if (!inputText.value.trim()) {
-        // Use a custom message box or a more subtle UI notification instead of alert()
-        // showMessageBox(translations[languageSelect.value]['empty-input-alert']);
-        console.warn(translations[languageSelect.value]['empty-input-alert']);
+        alert(translations[languageSelect.value]['empty-input-alert']);
         return;
     }
 
@@ -476,20 +471,14 @@ function downloadDocx() {
                         URL.revokeObjectURL(link.href);
                     })
                     .catch(error => {
-                        // Use a custom message box or a more subtle UI notification instead of alert()
-                        // showMessageBox(error.message || translations[languageSelect.value]['unexpected-error']);
-                        console.error(error.message || translations[languageSelect.value]['unexpected-error']);
+                        alert(error.message || translations[languageSelect.value]['unexpected-error']);
                     });
             })
             .catch(err => {
-                // Use a custom message box or a more subtle UI notification instead of alert()
-                // showMessageBox(translations[languageSelect.value]['mathjax-not-ready']);
-                console.error(translations[languageSelect.value]['mathjax-not-ready'], err);
+                alert(translations[languageSelect.value]['mathjax-not-ready']);
             });
     } else {
-        // Use a custom message box or a more subtle UI notification instead of alert()
-        // showMessageBox(translations[languageSelect.value]['mathjax-components-not-loaded']);
-        console.error(translations[languageSelect.value]['mathjax-components-not-loaded']);
+        alert(translations[languageSelect.value]['mathjax-components-not-loaded']);
     }
 }
 
