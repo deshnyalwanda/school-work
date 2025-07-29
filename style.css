@@ -20,6 +20,7 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     z-index: 100;
     flex-shrink: 0;
+    gap: 20px; /* Added gap to create space between content-left and content-right */
 }
 
 .dark-mode .main-header {
@@ -68,8 +69,8 @@ body {
 /* New styles for header navigation */
 .header-nav {
     display: flex;
-    gap: 20px;
-    margin-left: 20px; /* Space between site title and nav links */
+    gap: 30px; /* Increased gap */
+    margin-left: 30px; /* Increased margin */
 }
 
 .header-nav .nav-link {
@@ -120,7 +121,7 @@ body {
 .header-content-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 25px; /* Adjusted gap */
 }
 
 .language-dropdown select {
@@ -631,17 +632,31 @@ body.dark-mode input:checked + .slider {
         padding: 8px 12px;
     }
     .main-header {
-        flex-direction: column;
+        flex-wrap: wrap; /* Allow items to wrap */
         align-items: flex-start;
-        gap: 10px;
+        gap: 10px; /* Vertical gap between wrapped items */
     }
     .header-content-left {
-        flex-direction: column;
+        flex-wrap: wrap; /* Allow wrapping within this container */
         align-items: flex-start;
-        gap: 5px;
+        gap: 10px;
+        width: 100%; /* Take full width for wrapping */
     }
     .site-title {
         font-size: 1.8em;
+    }
+    .header-nav {
+        margin-left: 0; /* Remove left margin when wrapped to save space */
+        width: 100%; /* Ensure nav takes full width for easier wrapping */
+        justify-content: center; /* Center nav items when wrapped */
+        gap: 20px; /* Adjust gap for nav links if needed on small screens */
+        margin-top: 10px; /* Add some space if title wraps */
+    }
+    .header-content-right {
+        width: 100%;
+        justify-content: center; /* Center language and dark mode when wrapped */
+        margin-top: 10px; /* Add some space if previous section wraps */
+        gap: 20px; /* Maintain good gap for language and dark mode */
     }
     .fun-sentence {
         font-size: 1em;
