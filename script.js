@@ -10,7 +10,8 @@ const translations = {
         'site-title-link': 'AI Text 2 Word Converter',
         'about-us-link': 'About Us',
         'contact-us-link': 'Contact Us',
-        'fun-sentence': 'Say goodbye to equation frustration! Now, effortlessly transform complex AI-generated math into perfectly formatted Word documents with a single click!',
+        // Updated fun-sentence for SEO
+        'fun-sentence': 'ChatGPT to Word, Gemini to Word, Claude to Word & Beyond: Say goodbye to equation frustration! Effortlessly transform complex AI-generated math into perfectly formatted Word documents with a single click. Our AI Text 2 Word Converter handles all your AI outputs with precision.',
         'language-label': 'Language:',
         'paste-text-header': 'Paste Text from AI',
         'paste-button': 'Paste',
@@ -54,7 +55,7 @@ const translations = {
         'conversion-failed': 'La conversión falló. Por favor, inténtelo de nuevo más tarde o póngase en contacto con el soporte si el problema persiste.',
         'unexpected-error': 'Ocurrió un error inesperado durante la conversión. Por favor, inténtelo de nuevo.',
         'mathjax-not-ready': 'La renderización de las matemáticas no está lista. Por favor, espere un momento e inténtelo de nuevo.',
-        'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento y inténtelo de nuevo.',
+        'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento e inténtelo de nuevo.',
         'combined-footer-info': 'Contáctenos: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Todos los derechos reservados.',
         'sample-header': 'Ejemplo de Entrada y Salida',
         'about-us-header': 'Sobre Nosotros',
