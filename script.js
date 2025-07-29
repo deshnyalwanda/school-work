@@ -7,7 +7,7 @@ const languageSelect = document.getElementById('language-select');
 
 const translations = {
     en: {
-        'site-title-link': 'AI Text 2 Word Converter',
+        'site-title-link': 'Deepseek to Word + Chatgpt to Word (DOCX) Converter',
         'about-us-link': 'About Us',
         'contact-us-link': 'Contact Us',
         // Updated fun-sentence for SEO
@@ -36,7 +36,7 @@ const translations = {
         'contact-us-text': 'If you have any questions, feedback, or encounter any issues, please do not hesitate to reach out to us. We value your input and are always looking for ways to improve our service. You can contact us via email at <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. We aim to respond to all inquiries within 24-48 hours.'
     },
     es: {
-        'site-title-link': 'Convertidor de Texto AI a Word',
+        'site-title-link': 'Deepseek a Word + Chatgpt a Word (DOCX) Converter',
         'about-us-link': 'Sobre Nosotros',
         'contact-us-link': 'Contáctenos',
         'fun-sentence': '¡Diga adiós a la frustración con las ecuaciones! ¡Ahora, transforme sin esfuerzo las matemáticas complejas generadas por IA en documentos de Word perfectamente formateados con un solo clic!',
@@ -55,7 +55,7 @@ const translations = {
         'conversion-failed': 'La conversión falló. Por favor, inténtelo de nuevo más tarde o póngase en contacto con el soporte si el problema persiste.',
         'unexpected-error': 'Ocurrió un error inesperado durante la conversión. Por favor, inténtelo de nuevo.',
         'mathjax-not-ready': 'La renderización de las matemáticas no está lista. Por favor, espere un momento e inténtelo de nuevo.',
-        'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento e inténtelo de nuevo.',
+        'mathjax-components-not-loaded': 'Los componentes de renderización de matemáticas no están cargados. Por favor, espere un momento y inténtelo de nuevo.',
         'combined-footer-info': 'Contáctenos: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Todos los derechos reservados.',
         'sample-header': 'Ejemplo de Entrada y Salida',
         'about-us-header': 'Sobre Nosotros',
@@ -64,7 +64,7 @@ const translations = {
         'contact-us-text': 'Si tiene alguna pregunta, comentario o encuentra algún problema, no dude en ponerse en contacto con nosotros. Valoramos su opinión y siempre estamos buscando formas de mejorar nuestro servicio. Puede contactarnos por correo electrónico a <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nuestro objetivo es responder a todas las consultas en un plazo de 24 a 48 horas.'
     },
     fr: {
-        'site-title-link': 'Convertisseur de Texte IA en Word',
+        'site-title-link': 'Deepseek vers Word + Chatgpt vers Word (DOCX) Converter',
         'about-us-link': 'À Propos de Nous',
         'contact-us-link': 'Contactez-nous',
         'fun-sentence': 'Dites adieu à la frustration des équations ! Transformez désormais sans effort les mathématiques complexes générées par l\'IA en documents Word parfaitement formatés en un seul clic !',
@@ -92,7 +92,7 @@ const translations = {
         'contact-us-text': 'Si vous avez des questions, des commentaires ou rencontrez des problèmes, n\'hésitez pas à nous contacter. Nous apprécions votre avis et cherchons toujours des moyens d\'améliorer notre service. Vous pouvez nous contacter par e-mail à <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nous nous efforçons de répondre à toutes les demandes dans les 24 à 48 heures.'
     },
     de: {
-        'site-title-link': 'KI Text zu Word Konverter',
+        'site-title-link': 'Deepseek zu Word + Chatgpt zu Word (DOCX) Converter',
         'about-us-link': 'Über Uns',
         'contact-us-link': 'Kontakt',
         'fun-sentence': 'Verabschieden Sie sich von der Gleichungsfrustration! Verwandeln Sie jetzt mühelos komplexe KI-generierte Mathematik mit einem einzigen Klick in perfekt formatierte Word-Dokumente!',
@@ -117,10 +117,10 @@ const translations = {
         'about-us-header': 'Über Uns',
         'about-us-text': 'Wir sind eine kleine Gruppe von Studenten aus Nairobi, Kenia, die sich leidenschaftlich dafür einsetzen, die Nutzung von KI so nahtlos wie möglich zu gestalten. Wir haben eine gemeinsame Herausforderung identifiziert: die Umwandlung von KI-generiertem mathematischem Text, oft in LaTeX- oder ähnlichen Formaten, in leicht bearbeitbare Word-Dokumente. Dies ist unsere erste Anwendung, und wir hoffen, weiterhin Tools zu entwickeln, die komplexe Aufgaben für Studenten und Fachleute gleichermaßen vereinfachen. Wir sind bestrebt, einen zuverlässigen und benutzerfreundlichen Service anzubieten.',
         'contact-us-header': 'Kontakt',
-        'contact-us-text': 'Wenn Sie Fragen, Feedback oder Probleme haben, zögern Sie bitte nicht, uns zu kontaktieren. Wir schätzen Ihre Meinung und sind stets bemüht, unseren Service zu verbessern. Sie können uns per E-Mail unter <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a> erreichen. Wir bemühen uns, alle Anfragen innerhalb von 24-48 Stunden zu beantworten.'
+        'contact-us-text': 'Wenn Sie Fragen, Feedback oder Probleme haben, zögern Sie bitte nicht, uns zu kontaktieren. Wir schätzen Ihre Meinung und sind stets bemüht, unseren Service zu verbessern. Sie können uns per E-Mail unter <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a> erreichen. Wir bemühen uns, alle Anfragen innerhalb von 24-48 Stunden.'
     },
     sw: {
-        'site-title-link': 'Kigeuzi cha Maandishi ya AI kwenda Word',
+        'site-title-link': 'Deepseek hadi Word + Chatgpt hadi Word (DOCX) Converter',
         'about-us-link': 'Kuhusu Sisi',
         'contact-us-link': 'Wasiliana Nasi',
         'fun-sentence': 'Sema kwaheri kwa kuchanganyikiwa kwa milinganyo! Sasa, badilisha kwa urahisi hisabati changamano iliyozalishwa na AI kuwa hati za Word zilizopangiliwa kikamilifu kwa mbofyo mmoja!',
@@ -143,12 +143,12 @@ const translations = {
         'combined-footer-info': 'Wasiliana nasi: <a href="mailto:info@aitext2wordconverter.com" style="color: blue; text-decoration: underline;">info@aitext2wordconverter.com</a> ©2025 Nyalweezy. Haki zote zimehifadhiwa.',
         'sample-header': 'Mfano wa Ingizo na Matokeo',
         'about-us-header': 'Kuhusu Sisi',
-        'about-us-text': 'Sisi ni kikundi kidogo cha wanafunzi wenye makao yao Nairobi, Kenya, wenye shauku ya kufanya matumizi ya AI kuwa rahisi iwezekanavyo. Tulibaini changamoto ya kawaida: kubadilisha maandishi ya hisabati yanayozalishwa na AI, mara nyingi katika fomati za LaTeX au zinazofanana, kuwa hati za Word zinazoweza kuhaririwa kwa urahisi. Hii ni programu yetu ya kwanza, na tunatumai kuendelea kujenga zana zinazoragisha kazi ngumu kwa wanafunzi na wataalamu sawa. Tumejitolea kutoa huduma ya kuaminika na rahisi kutumia.',
+        'about-us-text': 'Sisi ni kikundi kidogo cha wanafunzi wenye makao yao Nairobi, Kenya, wenye shauku ya kufanya matumizi ya AI kuwa rahisi iwezekanavyo. Tulibaini changamoto ya kawaida: kubadilisha maandishi ya hisabati yanayozalishwa na AI, mara nyingi katika fomati za LaTeX au zinazofanana, kuwa hati za Word zinazoweza kuhaririwa kwa urahisi. Hii ni programu yetu ya kwanza, na tunatumai kuendelea kujenga zana zinazoragisha kazi ngumu kwa wanafunja na wataalamu sawa. Tumejitolea kutoa huduma ya kuaminika na rahisi kutumia.',
         'contact-us-header': 'Wasiliana Nasi',
         'contact-us-text': 'Ikiwa una maswali yoyote, maoni, au unakutana na masuala yoyote, tafadhali usisite kuwasiliana nasi. Tunathamini maoni yako na daima tunatafuta njia za kuboresha huduma yetu. Unaweza kuwasiliana nasi kupitia barua pepe kwa <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Tunalenga kujibu maswali yote ndani ya saa 24-48.'
     },
     ar: {
-        'site-title-link': 'محول النص الرياضي بالذكاء الاصطناعي إلى Word',
+        'site-title-link': 'Deepseek إلى Word + Chatgpt إلى Word (DOCX) Converter',
         'about-us-link': 'عنا',
         'contact-us-link': 'اتصل بنا',
         'fun-sentence': 'قل وداعًا لإحباط المعادلات! الآن، حوّل بسهولة المعادلات الرياضية المعقدة التي تم إنشاؤها بواسطة الذكاء الاصطناعي إلى مستندات Word منسقة بشكل مثالي بنقرة واحدة!',
@@ -176,7 +176,7 @@ const translations = {
         'contact-us-text': 'إذا كان لديك أي أسئلة أو ملاحظات أو واجهت أي مشاكل، فلا تتردد في التواصل معنا. نحن نقدر مدخلاتك ونسعى دائمًا لتحسين خدمتنا. يمكنك الاتصال بنا عبر البريد الإلكتروني على <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. نهدف إلى الرد على جميع الاستفسارات في غضون 24-48 ساعة.'
     },
     am: {
-        'site-title-link': 'የአይአይ ጽሑፍ ወደ ዎርድ መቀየሪያ',
+        'site-title-link': 'Deepseek ወደ Word + Chatgpt ወደ Word (DOCX) Converter',
         'about-us-link': 'ስለ እኛ',
         'contact-us-link': 'ያግኙን',
         'fun-sentence': 'የእኩልታ ብስጭትን ይሰናበቱ! አሁን፣ በAI የመነጩ ውስብስብ የሂሳብ ቀመሮችን በአንድ ጠቅታ ወደ ፍፁም የተቀረጹ የዎርድ ሰነዶች ያለልፋት ይቀይሩ!',
@@ -204,7 +204,7 @@ const translations = {
         'contact-us-text': 'ማንኛውም ጥያቄዎች፣ አስተያየቶች ወይም ችግሮች ካሉዎት እባክዎ እኛን ለማግኘት አያመንቱ። የእርስዎን ግብዓት ከፍ አድርገን እንመለከታለን እና አገልግሎታችንን ለማሻሻል ሁልጊዜ መንገዶችን እንፈልጋለን። በኢሜል ሊያገኙን ይችላሉ <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. ሁሉንም ጥያቄዎች በ24-48 ሰዓታት ውስጥ ለመመለስ ዓላማችን ነው።'
     },
     zh: {
-        'site-title-link': 'AI文本转Word转换器',
+        'site-title-link': 'Deepseek 到 Word + Chatgpt 到 Word (DOCX) Converter',
         'about-us-link': '关于我们',
         'contact-us-link': '联系我们',
         'fun-sentence': '告别公式烦恼！现在，只需轻轻一点，即可轻松将复杂的AI生成数学转换为格式完美的Word文档！',
@@ -232,7 +232,7 @@ const translations = {
         'contact-us-text': '如果您有任何问题、反馈或遇到任何问题，请随时与我们联系。我们重视您的意见，并一直在寻找改进我们服务的方法。您可以通过电子邮件联系我们：<a href="mailto:info@aitext2wordconverter.2com" class="contact-email-link">info@aitext2wordconverter.com</a>。我们的目标是在24-48小时内回复所有查询。'
     },
     ru: {
-        'site-title-link': 'Конвертер текста AI в Word',
+        'site-title-link': 'Deepseek в Word + Chatgpt в Word (DOCX) Converter',
         'about-us-link': 'О нас',
         'contact-us-link': 'Контакты',
         'fun-sentence': 'Попрощайтесь с проблемами уравнений! Теперь легко преобразуйте сложную математику, сгенерированную ИИ, в идеально отформатированные документы Word одним щелчком мыши!',
@@ -260,7 +260,7 @@ const translations = {
         'contact-us-text': 'Если у вас есть какие-либо вопросы, отзывы или вы столкнулись с какими-либо проблемами, пожалуйста, не стесняйтесь обращаться к нам. Мы ценим ваш вклад и всегда ищем способы улучшить наш сервис. Вы можете связаться с нами по электронной почте: <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Мы стремимся отвечать на все запросы в течение 24-48 часов.'
     },
     pt: {
-        'site-title-link': 'Conversor de Texto AI para Word',
+        'site-title-link': 'Deepseek para Word + Chatgpt para Word (DOCX) Converter',
         'about-us-link': 'Sobre Nós',
         'contact-us-link': 'Contato',
         'fun-sentence': 'Diga adeus à frustração com equações! Agora, transforme sem esforço a matemática complexa gerada por IA em documentos Word perfeitamente formatados com um único clique!',
@@ -285,7 +285,7 @@ const translations = {
         'about-us-header': 'Sobre Nós',
         'about-us-text': 'Somos um pequeno grupo de estudantes baseados em Nairobi, Quênia, apaixonados por tornar o uso da IA o mais transparente possível. Identificamos um desafio comum: converter texto matemático gerado por IA, muitas vezes em formatos LaTeX ou similares, em documentos Word facilmente editáveis. Este é o nosso primeiro aplicativo, e esperamos continuar a construir ferramentas que simplifiquem tarefas complexas para estudantes e profissionais. Estamos comprometidos em fornecer um serviço confiável e fácil de usar.',
         'contact-us-header': 'Contato',
-        'contact-us-text': 'Se você tiver alguma dúvida, feedback ou encontrar algum problema, não hesite em nos contatar. Valorizamos sua opinião e estamos sempre procurando maneiras de melhorar nosso serviço. Você pode nos contatar por e-mail em <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nosso objetivo é responder a todas as perguntas dentro de 24-48 horas.'
+        'contact-us-text': 'Se você tiver alguma dúvida, feedback ou encontrar algum problema, não hesite em nos contatar. Valorizamos sua opinião e estamos sempre procurando maneiras de melhorar nosso serviço. Você pode nos contactar por e-mail em <a href="mailto:info@aitext2wordconverter.com" class="contact-email-link">info@aitext2wordconverter.com</a>. Nosso objetivo é responder a todas as perguntas dentro de 24-48 horas.'
     }
 };
 
